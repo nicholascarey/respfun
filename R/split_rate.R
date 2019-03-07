@@ -8,19 +8,19 @@
 #' each and a scaling exponent.
 #'
 #' @usage
-#' split_rate(..., tR = NULL, b = 0.75)
+#' split_rate(x, tR = NULL, b = 0.75)
 #'
-#' @param ... numeric. A vector of body masses of all individuals in group
+#' @param x numeric. A vector of body masses of all individuals in group
 #' @param tR numeric. Total group metabolic rate
 #' @param b numeric. Metabolic scaling exponent
 #'
-#' @return A \code{list} object containing 5 numeric elements:
+#' @return Output is a \code{list} object containing 5 numeric elements:
 #'
-#' $a = \code{a} in the rate-mass power equation. Determined by the function
+#' $a = \code{a} in the mass~rate power equation. Determined by the function.
 #'
-#' $b = \code{b} in the rate-mass power equation. User entered
+#' $b = \code{b} in the mass~rate power equation. User entered.
 #'
-#' $tR = total group rate. User entered
+#' $tR = total group rate. User entered.
 #'
 #' $masses = specimen masses. User entered.
 #'
@@ -30,7 +30,7 @@
 #' @examples
 #' split_rate(c(2, 3, 4, 5, 6), tR = 500, b = 0.75)
 #'
-#' @author Nicholas Carey - \link{nicholascarey@gmail.com}
+#' @author Nicholas Carey - \email{nicholascarey@gmail.com}
 #'
 #' @export
 

@@ -4,23 +4,23 @@
 \alias{split_rate}
 \title{Divide a metabolic rate amongst a group}
 \usage{
-split_rate(..., tR = NULL, b = 0.75)
+split_rate(x, tR = NULL, b = 0.75)
 }
 \arguments{
+\item{x}{numeric. A vector of body masses of all individuals in group}
+
 \item{tR}{numeric. Total group metabolic rate}
 
 \item{b}{numeric. Metabolic scaling exponent}
-
-\item{...}{numeric. A vector of body masses of all individuals in group}
 }
 \value{
-A \code{list} object containing 5 numeric elements:
+Output is a \code{list} object containing 5 numeric elements:
 
-$a = \code{a} in the rate-mass power equation. Determined by the function
+$a = \code{a} in the mass~rate power equation. Determined by the function.
 
-$b = \code{b} in the rate-mass power equation. User entered
+$b = \code{b} in the mass~rate power equation. User entered.
 
-$tR = total group rate. User entered
+$tR = total group rate. User entered.
 
 $masses = specimen masses. User entered.
 
@@ -39,5 +39,5 @@ split_rate(c(2, 3, 4, 5, 6), tR = 500, b = 0.75)
 
 }
 \author{
-Nicholas Carey - \link{nicholascarey@gmail.com}
+Nicholas Carey - \email{nicholascarey@gmail.com}
 }
