@@ -7,6 +7,10 @@
 #' @importFrom utils head
 #' @export
 print.split_rate <- function(x, ...) {
+
+  rates <- round(x$indiv.rates,2)
+  masses <- round(x$masses,2)
+
   cat("Split Complete: \n \n")
   cat(glue("Intercept (a, calculated) :                    ",
                  {round(x$a, 2)}))
@@ -17,11 +21,15 @@ print.split_rate <- function(x, ...) {
   cat(glue("Total Group Rate (tR, user entered):           ",
                  {round(x$tR,2)}))
   cat("\n")
-  cat("\n")
-  # cat(glue("Individual Rates:",
-  #                {x$indiv.rates}))
-
-  rates <- round(x$indiv.rates,2)
+  if(length(rates) <= 5){
+    cat("Masses (masses, user entered): \n")
+    print(masses)
+  } else {
+    cat("Masses (masses, user entered): \n")
+    cat("(only first five shown) \n")
+    print(head(masses,5))
+    }
+    cat("\n")
 
   if(length(rates) <= 5){
     cat("Individual Rates Calculated: \n")
