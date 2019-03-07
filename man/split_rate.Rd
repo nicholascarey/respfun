@@ -4,10 +4,10 @@
 \alias{split_rate}
 \title{Divide a metabolic rate amongst a group}
 \usage{
-split_rate(x, tR = NULL, b = 0.75)
+split_rate(masses, tR = NULL, b = 0.75)
 }
 \arguments{
-\item{x}{numeric. A vector of body masses of all individuals in group}
+\item{masses}{numeric. A vector of body masses of all individuals in group}
 
 \item{tR}{numeric. Total group metabolic rate}
 
@@ -31,8 +31,20 @@ individuals. Sum should therefore equal tR. Determined by the function
 Divide a metabolic rate amongst a group of individuals.
 }
 \details{
-Divides a group metabolic rate amongst individuals, given body masses of
-each and a scaling exponent.
+Divides a group metabolic rate amongst individuals, given body
+masses of each and a scaling exponent.
+
+Take care to enter the correct scaling exponent (\code{b}). This is usually
+(with exceptions) a positive value between 0.66 and 1. If your \code{b} value is
+less than this, especially if it is less than 0.33, and ESPECIALLY if it is
+negative, then it is likely a MASS-SPECIFIC scaling exponent. The correct
+scaling exponent is the positive difference of this value from 1. For
+example, for a scaling exponent of 0.75, the mass-specific scaling exponent
+would be -0.25.
+
+If, for whatever reason, you want to do a simple per-capita division of the
+rate regardless of the body masses, enter \code{b = 0}. Or just divide it by the
+number of individuals.
 }
 \examples{
 split_rate(c(2, 3, 4, 5, 6), tR = 500, b = 0.75)

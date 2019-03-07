@@ -35,9 +35,9 @@ I’ll be revising the function soon to integrate nicely with
 
 ``` r
 ## Simple example
-split_rate(c(2, 3, 4, 5, 6), # body masses
-           tR = 500,         # total metabolic rate of group
-           b = 0.75)         # metabolic scaling exponent
+split_rate(masses = c(2, 3, 4, 5, 6), # body masses
+           tR = 500,                  # total metabolic rate of group
+           b = 0.75)                  # metabolic scaling exponent
 ```
 
 Output:
@@ -47,6 +47,8 @@ Output:
     #> Intercept (a, calculated) :                    35.8
     #> Metabolic Scaling Exponent (b, user entered):  0.75
     #> Total Group Rate (tR, user entered):           500
+    #> Masses (masses, user entered): 
+    #> [1] 2 3 4 5 6
     #> 
     #> Individual Rates Calculated: 
     #> [1]  60.21  81.60 101.25 119.70 137.24
