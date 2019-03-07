@@ -1,12 +1,15 @@
 Package: respfun
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Collection of random functions for use with respirometry data.
+Date: 2019-03-07
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Nicholas Carey
+Maintainer: Nicholas Carey <nicholascarey@gmail.com>
+Description: Collection of random functions for use with respirometry data. 
+    Not intended to be a fully featured package. 
+License: GPL-3
 Encoding: UTF-8
+URL: https://github.com/nicholascarey/respfun
+BugReports: https://github.com/nicholascarey/respfun/issues
 LazyData: true
 RoxygenNote: 6.1.1
