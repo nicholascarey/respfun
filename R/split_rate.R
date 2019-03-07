@@ -93,8 +93,8 @@ split_rate <- function(masses, tR = NULL, b = 0.75) {
   }
 
   if (b < 0) {
-    warning("Value of b is less/equal to 0.33, which is WELL outside the typical range of 0.66 to 1.
-  Check this value is correct, and not the MASS-SPECIFIC scaling exponent.
+    warning("Value of b is NEGATIVE. Typical b values are positive, between 0.66 and 1.
+  Check this value is not the MASS-SPECIFIC scaling exponent.
   Result has been returned regardless.")
   }
 

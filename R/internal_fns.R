@@ -41,6 +41,8 @@ print.split_rate <- function(x, ...) {
     cat(glue("  ", {length(rates) - 5},
       " Additional Rates Calculated... \n"))
     }
+    cat("\n")
+
 }
 
 
