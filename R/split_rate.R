@@ -140,7 +140,7 @@ split_rate <- function(masses, tR = NULL, b = 0.75, units = NULL) {
   ## return scaled rates
   indiv_rates <- a * (masses^b)
 
-  ## new output structure
+  ## assemble output
   output <- list(
     a = numeric(0), b = numeric(0), tR = numeric(0),
     masses = vector(), units = character(), indiv.rates = vector()
@@ -149,7 +149,7 @@ split_rate <- function(masses, tR = NULL, b = 0.75, units = NULL) {
   output[[1]] <- a
   output[[2]] <- b
   output[[3]] <- rate
-  output[[4]] <- masses # masses
+  output[[4]] <- masses
   output[[5]] <- units
   output[[6]] <- indiv_rates
 
