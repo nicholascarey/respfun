@@ -75,31 +75,6 @@
 #'
 #' @export
 
-## R = a*(M^b)
-## R = NON-mass specific O₂ uptake rate
-## a = intercept
-## M = mass
-## b = scaling exponent (typically 0.66/0.75/1)
-## NOT the mass-specific one - should be the positive difference from 1
-## i.e. MASS-SPECIFIC scaling expoenent of -0.25 means an actual scaling exponent of 0.75
-
-## therefore, Total Group Rate (tR):
-## tR = a*(M1^b) + a*(M2^b) + a*(M3^b) .....
-## M1,M2 = masses of specimens 1, 2...
-## a and b are the same for every specimen
-
-## rearrange
-## a = tR/(sum(M1^b + M2^b + M3^b.....))
-
-## pick an appropriate b value
-
-## then to get the scaled rate of each specimen put its mass into the equation
-## R = a*(M^b)
-
-## sum of scaled rates should equal tR
-
-## x should be a vector of masses, tR is total group rate
-
 split_rate <- function(masses, tR = NULL, b = 0.75, units = NULL) {
 
   ## entry checks
@@ -164,13 +139,6 @@ split_rate <- function(masses, tR = NULL, b = 0.75, units = NULL) {
 
   ## return scaled rates
   indiv_rates <- a * (masses^b)
-
-  ## check result - sum of scaled rates should equal tR
-
-  # this check fails because of trailing decimal differences... fix later
-  # if(sum(indiv_rates) != tR){
-  #   warning("Something is wrong. Sum of scaled rates does not equal entered tR")
-  #   return("NA")}
 
   ## new output structure
   output <- list(
