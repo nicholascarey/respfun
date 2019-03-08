@@ -4,7 +4,7 @@
 \alias{split_rate}
 \title{Divide a metabolic rate amongst a group}
 \usage{
-split_rate(masses, tR = NULL, b = 0.75)
+split_rate(masses, tR = NULL, b = 0.75, units = NULL)
 }
 \arguments{
 \item{masses}{numeric. A vector of body masses of all individuals in group}
@@ -12,20 +12,9 @@ split_rate(masses, tR = NULL, b = 0.75)
 \item{tR}{numeric. Total group metabolic rate}
 
 \item{b}{numeric. Metabolic scaling exponent}
-}
-\value{
-Output is a \code{list} object containing 5 numeric elements:
 
-$a = \code{a} in the mass~rate power equation. Determined by the function.
-
-$b = \code{b} in the mass~rate power equation. User entered.
-
-$tR = total group rate. User entered.
-
-$masses = specimen masses. User entered.
-
-$indiv.rates = Primary output of interest. Group rate divided between
-individuals. Sum should therefore equal tR. Determined by the function
+\item{units}{string. Units of the rate. Extracted from convert_rate object or
+can be entered by the user. For information only, does not affect any calculations.}
 }
 \description{
 Divide a metabolic rate amongst a group of individuals.
@@ -36,8 +25,8 @@ masses of each and a scaling exponent.
 
 Take care to enter the correct scaling exponent (\code{b}). This is usually
 (with exceptions) a positive value between 0.66 and 1. If your \code{b} value is
-less than this, especially if it is less than 0.33, and ESPECIALLY if it is
-negative, then it is likely a MASS-SPECIFIC scaling exponent. The correct
+less than this, especially if it is less than 0.33, and \emph{especially} if it is
+negative, then it is likely a \emph{mass-specific} scaling exponent. The correct
 scaling exponent is the positive difference of this value from 1. For
 example, for a scaling exponent of 0.75, the mass-specific scaling exponent
 would be -0.25.
@@ -45,7 +34,56 @@ would be -0.25.
 If, for whatever reason, you want to do a simple per-capita division of the
 rate regardless of the body masses, enter \code{b = 0}. Or just divide it by the
 number of individuals.
+
+Units can be entered, e.g. \code{units = "mg/h"}, if the user wants to save
+these in the output for reference, however they do not affect calculations
+in any way. If a \code{respR::convert_rate} object is used for the rate (see
+below), the units are extracted from this and any other \code{units} input
+ignored.
 }
+\section{Sign of the rate}{
+ NOTE: both negative and positive rates can be entered. In
+respirometry experiments, rates are typically reported as positive values.
+These can be entered as is. In the case of \code{respR::convert_rate} objects,
+extracted rates will typically be \emph{negative}, and these are left unchanged
+in the \code{split_rate} function. In \code{respR} rates are represented by negative
+slopes, and therefore negative rates, to be mathematically consistent since
+they represent oxygen depletion. You can enter the rate as the usually
+reported postive value, or as a negative: the function will work with
+either. Returned rates and intercept \code{a} will be identical in value, except
+for the sign. In effect, if you enter a negative rate you can simply
+reverse the signs for \code{a} and individual rates in the output.
+}
+
+\section{\code{respR} integration}{
+ For total rate (\code{tR}) the function accepts
+objects saved from the \code{respR}
+(\url{https://github.com/januarharianto/respR}) \code{convert_rate} function. In
+this case, the rate is extracted from the object and units automatically
+identified. However, if it contains a mass-specific rate (i.e. the rate has
+been adjusted in \code{respR::convert_rate} to a specific mass), no conversion
+is done and a warning is returned. Only absolute, that is non-mass
+specific, respiration rates should be divided in this way.
+}
+
+\section{Output}{
+ Output is a \code{list} object containing 6 elements:
+
+\code{$a} = \code{a}, the intercept in the mass~rate power equation. Determined by the function.
+
+\code{$b} = \code{b}, the exponent in the mass~rate power equation. User entered.
+
+\code{$tR} = total group rate. User entered.
+
+\code{$masses} = specimen masses. User entered.
+
+\code{$units} = units of the rate. User entered or extracted from \code{convert_rate}
+object. For information only, does not affect any calculations.
+
+\code{$indiv.rates} = Primary output of interest. Group rate divided between
+individuals. Sum should therefore equal tR. Determined by the function
+}
+
 \examples{
 split_rate(c(2, 3, 4, 5, 6), tR = 500, b = 0.75)
 

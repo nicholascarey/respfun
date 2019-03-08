@@ -28,8 +28,10 @@ Goldbogen. 2019. Grouping reduces the metabolic demand of a social
 squid. *Marine Ecology Progress Series*. 612: 141–150
 <https://doi.org/10.3354/meps12880>
 
-I’ll be revising the function soon to integrate nicely with
-[`respR`](https://github.com/januarharianto/respR) functions.
+This function integrates with the
+[`respR`](https://github.com/januarharianto/respR) package: objects
+saved from the `respR::convert_rate` function can be entered, and the
+rate and units will be automatically extracted.
 
 ### Example
 
@@ -37,21 +39,25 @@ I’ll be revising the function soon to integrate nicely with
 ## Simple example
 split_rate(masses = c(2, 3, 4, 5, 6), # body masses
            tR = 500,                  # total metabolic rate of group
-           b = 0.75)                  # metabolic scaling exponent
+           b = 0.75,                  # metabolic scaling exponent
+           units = "mg/h")            # units
 ```
 
 Output:
 
-    #> Split Complete: 
+    #> 
+    #> Rate Division Complete: 
     #>  
-    #> Intercept (a, calculated) :                    35.8
+    #> Intercept (a, calculated) :                    35.7984448854878
     #> Metabolic Scaling Exponent (b, user entered):  0.75
     #> Total Group Rate (tR, user entered):           500
     #> Masses (masses, user entered): 
     #> [1] 2 3 4 5 6
     #> 
     #> Individual Rates Calculated: 
-    #> [1]  60.21  81.60 101.25 119.70 137.24
+    #> [1]  60.20557  81.60281 101.25329 119.69931 137.23902
+    #> 
+    #> Rate units: mg/h
 
 ### Future functionality
 
