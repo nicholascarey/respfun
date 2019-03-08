@@ -8,18 +8,19 @@
 #' @export
 print.split_rate <- function(x, ...) {
 
-  rates <- round(x$indiv.rates,2)
-  masses <- round(x$masses,2)
+  rates <- x$indiv.rates
+  masses <- x$masses
 
-  cat("Split Complete: \n \n")
+  cat("\n")
+  cat("Rate Division Complete: \n \n")
   cat(glue("Intercept (a, calculated) :                    ",
-                 {round(x$a, 2)}))
+                 {x$a}))
   cat("\n")
   cat(glue("Metabolic Scaling Exponent (b, user entered):  ",
                  {x$b}))
   cat("\n")
   cat(glue("Total Group Rate (tR, user entered):           ",
-                 {round(x$tR,2)}))
+                 {x$tR}))
   cat("\n")
   if(length(rates) <= 5){
     cat("Masses (masses, user entered): \n")
@@ -35,14 +36,21 @@ print.split_rate <- function(x, ...) {
     cat("Individual Rates Calculated: \n")
     print(rates)
     } else {
-    cat("Individual Rates Calculated (only first five shown): \n")
+    cat("Individual Rates (calculated, only first five shown): \n")
     print(head(rates,5))
-    cat("\n")
     cat(glue("  ", {length(rates) - 5},
-      " Additional Rates Calculated... \n"))
+      " Additional rates calculated... \n"))
+    cat("\n")
     }
     cat("\n")
 
+  if(class(x) == "convert_rate")
+    cat(glue("Rate units (from convert_rate object): ", {x$units}))
+    else
+    cat(glue("Rate units: ", {x$units}))
+
+    cat("\n")
+    cat("\n")
 }
 
 
