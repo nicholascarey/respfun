@@ -14,6 +14,8 @@ knitr::opts_chunk$set(
 ```
 # respfun
 
+[![Travis build status](https://travis-ci.org/nicholascarey/respfun.svg?branch=master)](https://travis-ci.org/nicholascarey/respfun)
+
 This package is a collection of random functions for use with respirometry data. More will be added with time. Not intended to be a fully featured R package. 
 
 ### Installation
