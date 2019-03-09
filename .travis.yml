@@ -4,7 +4,7 @@ language: R
 sudo: false
 cache: packages
 install:
-    #- Rscript -e 'install.packages(c("devtools", "testthat"))'
+    - Rscript -e 'install.packages(c("devtools", "testthat"))'
     - Rscript -e 'devtools::install_github("januarharianto/respR")'
 os:
   - linux
