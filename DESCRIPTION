@@ -17,4 +17,5 @@ Roxygen: list(markdown = TRUE)
 Imports:
     glue, respR
 Suggests: 
-    testthat
+    testthat,
+    covr

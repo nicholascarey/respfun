@@ -160,8 +160,3 @@ split_rate <- function(masses, tR = NULL, b = 0.75, units = NULL) {
 }
 
 
-
-# masses <- c(2,3,4,5,6,7,8)
-# b <- 0.75
-# tR <- respr_conv
-# tR <- respr_conv_wmass
