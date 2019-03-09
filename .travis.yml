@@ -5,6 +5,8 @@ sudo: false
 cache: packages
 r_packages:
   - covr
+  - devtools
+  - testthat
 #install:
     #- Rscript -e 'install.packages(c("devtools", "testthat"))'
     #- Rscript -e 'devtools::install_github("januarharianto/respR")'
