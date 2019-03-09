@@ -7,9 +7,9 @@ r_packages:
   - covr
   - devtools
   - testthat
-install:
+r_github_packages:
     #- Rscript -e 'install.packages(c("devtools", "testthat"))'
-    - Rscript -e 'devtools::install_github("januarharianto/respR")'
+    - januarharianto/respR
 os:
   - linux
   - osx
