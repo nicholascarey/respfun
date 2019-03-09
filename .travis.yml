@@ -3,9 +3,11 @@
 language: R
 sudo: false
 cache: packages
-install:
-    - Rscript -e 'install.packages(c("devtools", "testthat"))'
-    - Rscript -e 'devtools::install_github("januarharianto/respR")'
+r_packages:
+  - covr
+#install:
+    #- Rscript -e 'install.packages(c("devtools", "testthat"))'
+    #- Rscript -e 'devtools::install_github("januarharianto/respR")'
 os:
   - linux
   - osx
