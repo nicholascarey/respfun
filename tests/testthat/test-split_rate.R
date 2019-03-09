@@ -13,6 +13,12 @@ expect_is(simple_output,
 
 # test prints ok
 expect_output(print(simple_output))
+# test prints with 5 or less masses
+expect_output(print(split_rate(masses = c(2, 3, 4, 5),
+                               tR = 500,
+                               b = 0.75)))
+
+
 
 ## test stops with wrong inputs
 expect_error(split_rate(masses = c(2, 3, 4, 5, 6, 7),
