@@ -73,6 +73,11 @@ respr_output_no_mass <- split_rate(masses = c(2, 3, 4, 5, 6, 7),
 expect_is(respr_output_no_mass,
           "split_rate")
 
+# test prints with respR object
+expect_output(print(split_rate(masses = c(2, 3, 4, 5, 6, 7),
+                               tR = urch_rate,
+                               b = 0.75)))
+
 # Accepts convert_rate objects
 expect_message(split_rate(masses = c(2, 3, 4, 5, 6, 7),
                           tR = urch_rate,
