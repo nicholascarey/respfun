@@ -13,7 +13,6 @@ expect_is(simple_output,
 
 
 # Test STOPS with respR object with mass-specific rate --------------------
-skip_on_travis()
 
 library(respR)
 suppressWarnings(
