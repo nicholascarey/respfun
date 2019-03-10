@@ -6,7 +6,7 @@ simple_output <- split_rate(masses = c(2, 3, 4, 5, 6, 7),
                      b = 0.75)
 
 expect_output(str(simple_output),
-              "List of 6")
+              "List of 7")
 
 expect_is(simple_output,
               "split_rate")
@@ -79,10 +79,10 @@ expect_output(print(split_rate(masses = c(2, 3, 4, 5, 6, 7),
                                b = 0.75)))
 
 # Accepts convert_rate objects
-expect_message(split_rate(masses = c(2, 3, 4, 5, 6, 7),
+expect_equal(split_rate(masses = c(2, 3, 4, 5, 6, 7),
                           tR = urch_rate,
-                          b = 0.75),
-               "respR convert_rate object detected...")
+                          b = 0.75)$input,
+               "convert_rate")
 
 # units correctly extracted
 expect_equal(respr_output_no_mass$units,

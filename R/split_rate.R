@@ -7,11 +7,11 @@
 #'
 #'   Take care to enter the correct scaling exponent (`b`). This is usually
 #'   (with exceptions) a positive value between 0.66 and 1. If your `b` value is
-#'   less than this, especially if it is less than 0.33, and *especially* if it is
-#'   negative, then it is likely a *mass-specific* scaling exponent. The correct
-#'   scaling exponent is the positive difference of this value from 1. For
-#'   example, for a scaling exponent of 0.75, the mass-specific scaling exponent
-#'   would be -0.25.
+#'   less than this, especially if it is less than 0.33, and *especially* if it
+#'   is negative, then it is likely a *mass-specific* scaling exponent. The
+#'   correct scaling exponent is the positive difference of this value from 1.
+#'   For example, for a scaling exponent of 0.75, the mass-specific scaling
+#'   exponent would be -0.25.
 #'
 #'   If, for whatever reason, you want to do a simple per-capita division of the
 #'   rate regardless of the body masses, enter `b = 0`. Or just divide it by the
@@ -23,30 +23,32 @@
 #'   below), the units are extracted from this and any other `units` input
 #'   ignored.
 #'
-#' @section Sign of the rate: NOTE: both negative and positive rates can be entered. In
-#'   respirometry experiments, rates are typically reported as positive values.
-#'   These can be entered as is. In the case of `respR::convert_rate` objects,
-#'   extracted rates will typically be *negative*, and these are left unchanged
-#'   in the `split_rate` function. In `respR` rates are represented by negative
-#'   slopes, and therefore negative rates, to be mathematically consistent since
-#'   they represent oxygen depletion. You can enter the rate as the usually
+#' @section Sign of the rate: NOTE: both negative and positive rates can be
+#'   entered. In respirometry experiments, rates are typically reported as
+#'   positive values. These can be entered as is. In the case of
+#'   `respR::convert_rate` objects, extracted rates will typically be
+#'   *negative*, and these are left unchanged in the `split_rate` function. In
+#'   `respR`, to be mathematically consistent (since they represent oxygen
+#'   depletion), respiration rates are represented by negative slopes, and
+#'   therefore rates returned as negative. You can enter the rate as the usually
 #'   reported postive value, or as a negative: the function will work with
 #'   either. Returned rates and intercept `a` will be identical in value, except
-#'   for the sign. In effect, if you enter a negative rate you can simply
-#'   reverse the signs for `a` and individual rates in the output.
+#'   for the sign. In effect, if you enter a negative rate you can simply ignore
+#'   the signs for `a` and individual rates in the output.
 #'
 #' @section `respR` integration: For total rate (`tR`) the function accepts
 #'   objects saved from the \code{respR}
 #'   (\url{https://github.com/januarharianto/respR}) `convert_rate` function. In
-#'   this case, the rate is extracted from the object and units automatically
-#'   identified. However, if it contains a mass-specific rate (i.e. the rate has
-#'   been adjusted in `respR::convert_rate` to a specific mass), no conversion
-#'   is done and a warning is returned. Only absolute, that is non-mass
-#'   specific, respiration rates should be divided in this way.
+#'   this case, the rate and units are automatically extracted. However, if it
+#'   contains a mass-specific rate (i.e. the rate has been adjusted in
+#'   `respR::convert_rate` to a specific mass), no conversion is done and a
+#'   warning is returned. Only absolute, that is non-mass specific, respiration
+#'   rates should be divided in this way.
 #'
-#' @section Output: Output is a \code{list} object containing 6 elements:
+#' @section Output: Output is a \code{list} object containing 7 elements:
 #'
-#'   `$a` = `a`, the intercept in the mass~rate power equation. Determined by the function.
+#'   `$a` = `a`, the intercept in the mass~rate power equation. Determined by
+#'   the function.
 #'
 #'   `$b` = `b`, the exponent in the mass~rate power equation. User entered.
 #'
@@ -60,22 +62,26 @@
 #'   `$indiv.rates` = Primary output of interest. Group rate divided between
 #'   individuals. Sum should therefore equal tR. Determined by the function
 #'
-#' @usage split_rate(masses, tR = NULL, b = 0.75, units = NULL)
+#'   `$input` = origin of `tR` and `units`. Either `manual` entry or
+#'   `convert_rate` object
 #'
-#' @param masses numeric. A vector of body masses of all individuals in group
+#' @usage split_rate(tR = NULL, masses, b = 0.75, units = NULL)
+#'
 #' @param tR numeric. Total group metabolic rate
+#' @param masses numeric. A vector of body masses of all individuals in group
 #' @param b numeric. Metabolic scaling exponent
 #' @param units string. Units of the rate. Extracted from convert_rate object or
-#'   can be entered by the user. For information only, does not affect any calculations.
+#'   can be entered by the user. For information only, does not affect any
+#'   calculations.
 #'
 #' @examples
-#' split_rate(c(2, 3, 4, 5, 6), tR = 500, b = 0.75)
+#' split_rate(tR = 500, masses = c(2, 3, 4, 5, 6), b = 0.75)
 #'
 #' @author Nicholas Carey - \email{nicholascarey@gmail.com}
 #'
 #' @export
 
-split_rate <- function(masses, tR = NULL, b = 0.75, units = NULL) {
+split_rate <- function(tR = NULL, masses, b = 0.75, units = NULL) {
 
   ## entry checks
   if (is.null(tR)) {
@@ -109,7 +115,8 @@ split_rate <- function(masses, tR = NULL, b = 0.75, units = NULL) {
 # respR convert_rate object input -----------------------------------------
 
   if(class(tR) == "convert_rate"){
-    message("respR convert_rate object detected...")
+    input <- "convert_rate"
+
 
     if(!is.null(units))
       message("'units' input ignored. Rate units extracted from convert_rate object.")
@@ -121,8 +128,6 @@ split_rate <- function(masses, tR = NULL, b = 0.75, units = NULL) {
     if(any(sapply(pattern, function(x) grepl(x, units))))
       stop("Mass-specific units detected in convert_rate object.
   Cannot divide rate by mass if rate is already corrected for mass!")
-    else
-      message("Performing rate division...")
   }
 
 
@@ -130,6 +135,11 @@ split_rate <- function(masses, tR = NULL, b = 0.75, units = NULL) {
 
   if(is.numeric(tR))
     rate <- tR
+
+  if(is.numeric(tR))
+    input <- "manual"
+
+  if(is.numeric(tR))
 
   if(is.null(units))
     units <- "Undefined"
@@ -143,7 +153,8 @@ split_rate <- function(masses, tR = NULL, b = 0.75, units = NULL) {
   ## assemble output
   output <- list(
     a = numeric(0), b = numeric(0), tR = numeric(0),
-    masses = vector(), units = character(), indiv.rates = vector()
+    masses = vector(), units = character(), indiv.rates = vector(),
+    input = character()
   )
 
   output[[1]] <- a
@@ -152,6 +163,7 @@ split_rate <- function(masses, tR = NULL, b = 0.75, units = NULL) {
   output[[4]] <- masses
   output[[5]] <- units
   output[[6]] <- indiv_rates
+  output[[7]] <- input
 
   ## Assign class
   class(output) <- "split_rate"

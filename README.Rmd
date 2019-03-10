@@ -33,12 +33,11 @@ devtools::install_github("nicholascarey/respfun")
 For now there is just one function, `split_rate`. This function divides a metabolic rate between a group of individuals 
 based on their masses and a metabolic scaling exponent. It was used in this recent publication:
 
-Benjamin P. Burford, Nicholas Carey, William F. Gilly, Jeremy A. Goldbogen. 2019. Grouping reduces the metabolic demand of a social squid. 
-*Marine Ecology Progress Series*. 612: 141–150 https://doi.org/10.3354/meps12880
+*Benjamin P. Burford, Nicholas Carey, William F. Gilly, Jeremy A. Goldbogen. 2019. Grouping reduces the metabolic demand of a social squid. 
+**Marine Ecology Progress Series**. 612: 141–150 https://doi.org/10.3354/meps12880*
 
 This function integrates with the [`respR`](https://github.com/januarharianto/respR) package: objects saved from the `respR::convert_rate` function can be 
-entered, and the rate and units will be automatically extracted. 
-
+entered (or `%>%` piped), and the rate and units will be automatically extracted. 
 
 ### Example
 
@@ -48,18 +47,64 @@ library(respfun)
 
 ```{r eval = F}
 ## Simple example
-split_rate(masses = c(2, 3, 4, 5, 6), # body masses
-           tR = 500,                  # total metabolic rate of group
+split_rate(tR = 500,                  # total metabolic rate of group
+           masses = c(2, 3, 4, 5, 6), # body masses
            b = 0.75,                  # metabolic scaling exponent
            units = "mg/h")            # units
 ```
 Output:
 ```{r eval = T, echo = F}
 ## Simple example
-split_rate(c(2, 3, 4, 5, 6), # body masses
-           tR = 500,         # total metabolic rate of group
-           b = 0.75,         # metabolic scaling exponent
-           units = "mg/h")   # units
+split_rate(tR = 500,                  # total metabolic rate of group
+           masses = c(2, 3, 4, 5, 6), # body masses
+           b = 0.75,                  # metabolic scaling exponent
+           units = "mg/h")            # units
+```
+
+### `respR` Example
+```{r echo = F}
+library(respR)
+```
+
+```{r eval = F}
+## Simple example
+library(respR)                                           # Load respR
+
+urchins.rd %>%                                           # NOT a group respirometry experiment,
+                                                          # - Just using it as an example,
+  inspect(1, 15) %>%                                     # inspect
+  calc_rate(from = 4, to = 29, by = "time") %>%          # calculate rate
+  print() %>%
+  adjust_rate(
+    calc_rate.bg(urchins.rd, xcol = 1, ycol = 18:19,     # adjust for background
+                 from = 5, to = 40, by = "time")) %>%
+  print() %>%
+  convert_rate(o2.unit = "mgl-1", time.unit = "m",       # convert
+               output.unit = "mg/h", volume = 1.09) %>%
+  split_rate(c(2, 3, 4, 5, 6, 7, 8),                     # divide
+             0.75) %>%
+  print()
+
+```
+Output:
+```{r eval = T, echo = F, fig.keep = "none", warning = FALSE}
+library(respR)
+
+urchins.rd %>%                                           # NOT a group respirometry experiment,
+                                                          # - Just using it as an example,
+  inspect(1, 15) %>%                                     # inspect
+  calc_rate(from = 4, to = 29, by = "time") %>%          # calculate rate
+  print() %>%
+  adjust_rate(
+    calc_rate.bg(urchins.rd, xcol = 1, ycol = 18:19,     # adjust for background
+                 from = 5, to = 40, by = "time")) %>%
+  print() %>%
+  convert_rate(o2.unit = "mgl-1", time.unit = "m",       # convert
+               output.unit = "mg/h", volume = 1.09) %>%
+  print() %>%
+  split_rate(c(2, 3, 4, 5, 6, 7, 8),                     # divide
+             0.75) %>%
+  print()
 ```
 
 ### Future functionality
