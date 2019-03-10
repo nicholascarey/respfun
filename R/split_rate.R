@@ -139,8 +139,6 @@ split_rate <- function(tR = NULL, masses, b = 0.75, units = NULL) {
   if(is.numeric(tR))
     input <- "manual"
 
-  if(is.numeric(tR))
-
   if(is.null(units))
     units <- "Undefined"
 
