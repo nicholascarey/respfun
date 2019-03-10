@@ -15,8 +15,13 @@ cache:
 
 # Adapt as necessary starting from here
 
+environment:
+    R_ARCH: x64
+    USE_RTOOLS: true
+
 build_script:
   - travis-tool.sh install_deps
+  - travis-tool.sh install_github januarharianto/respR
 
 test_script:
   - travis-tool.sh run_tests
