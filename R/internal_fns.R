@@ -10,38 +10,30 @@ print.split_rate <- function(x, ...) {
 
   rates <- x$indiv.rates
   masses <- x$masses
+  cat("\n# split_rate # -------------------------\n")
+  cat("Rate Division Complete: \n")
 
+  if(x$input == "convert_rate"){
+    cat("--- respR::convert_rate object detected ---\n")
+  }
   cat("\n")
-  cat("Rate Division Complete: \n \n")
-  cat(glue("Intercept (a, calculated) :                    ",
+
+  cat(glue("Intercept (a, calculated) :               ",
                  {x$a}))
   cat("\n")
-  cat(glue("Metabolic Scaling Exponent (b, user entered):  ",
+  cat(glue("Metabolic Scaling Exponent (b, entered):  ",
                  {x$b}))
   cat("\n")
-  cat(glue("Total Group Rate (tR, user entered):           ",
+  cat(glue("Total Group Rate (tR, entered):           ",
                  {x$tR}))
   cat("\n")
-  if(length(rates) <= 5){
-    cat("Masses (masses, user entered): \n")
+    cat("Masses (masses, entered): \n")
     print(masses)
-  } else {
-    cat("Masses (masses, user entered): \n")
-    cat("(only first five shown) \n")
-    print(head(masses,5))
-    }
     cat("\n")
 
-  if(length(rates) <= 5){
-    cat("Individual Rates Calculated: \n")
+    cat("Individual rates (indiv.rates, calculated): \n")
     print(rates)
-    } else {
-    cat("Individual Rates (calculated, only first five shown): \n")
-    print(head(rates,5))
-    cat(glue("  ", {length(rates) - 5},
-      " Additional rates calculated... \n"))
-    cat("\n")
-    }
+
     cat("\n")
     cat(glue("Rate units: ", {x$units}))
     cat("\n")

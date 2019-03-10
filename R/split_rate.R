@@ -112,7 +112,8 @@ split_rate <- function(tR = NULL, masses, b = 0.75, units = NULL) {
 # respR convert_rate object input -----------------------------------------
 
   if(class(tR) == "convert_rate"){
-    message("respR convert_rate object detected...")
+    input <- "convert_rate"
+
 
     if(!is.null(units))
       message("'units' input ignored. Rate units extracted from convert_rate object.")
@@ -124,8 +125,6 @@ split_rate <- function(tR = NULL, masses, b = 0.75, units = NULL) {
     if(any(sapply(pattern, function(x) grepl(x, units))))
       stop("Mass-specific units detected in convert_rate object.
   Cannot divide rate by mass if rate is already corrected for mass!")
-    else
-      message("Performing rate division...")
   }
 
 
@@ -133,6 +132,11 @@ split_rate <- function(tR = NULL, masses, b = 0.75, units = NULL) {
 
   if(is.numeric(tR))
     rate <- tR
+
+  if(is.numeric(tR))
+    input <- "manual"
+
+  if(is.numeric(tR))
 
   if(is.null(units))
     units <- "Undefined"
@@ -146,7 +150,8 @@ split_rate <- function(tR = NULL, masses, b = 0.75, units = NULL) {
   ## assemble output
   output <- list(
     a = numeric(0), b = numeric(0), tR = numeric(0),
-    masses = vector(), units = character(), indiv.rates = vector()
+    masses = vector(), units = character(), indiv.rates = vector(),
+    input = character()
   )
 
   output[[1]] <- a
@@ -155,6 +160,7 @@ split_rate <- function(tR = NULL, masses, b = 0.75, units = NULL) {
   output[[4]] <- masses
   output[[5]] <- units
   output[[6]] <- indiv_rates
+  output[[7]] <- input
 
   ## Assign class
   class(output) <- "split_rate"
