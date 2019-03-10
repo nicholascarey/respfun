@@ -69,7 +69,7 @@ rates should be divided in this way.
 }
 
 \section{Output}{
- Output is a \code{list} object containing 6 elements:
+ Output is a \code{list} object containing 7 elements:
 
 \code{$a} = \code{a}, the intercept in the mass~rate power equation. Determined by
 the function.
@@ -85,6 +85,9 @@ object. For information only, does not affect any calculations.
 
 \code{$indiv.rates} = Primary output of interest. Group rate divided between
 individuals. Sum should therefore equal tR. Determined by the function
+
+\code{$input} = origin of \code{tR} and \code{units}. Either \code{manual} entry or
+\code{convert_rate} object
 }
 
 \examples{

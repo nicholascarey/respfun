@@ -45,7 +45,7 @@
 #'   warning is returned. Only absolute, that is non-mass specific, respiration
 #'   rates should be divided in this way.
 #'
-#' @section Output: Output is a \code{list} object containing 6 elements:
+#' @section Output: Output is a \code{list} object containing 7 elements:
 #'
 #'   `$a` = `a`, the intercept in the mass~rate power equation. Determined by
 #'   the function.
@@ -61,6 +61,9 @@
 #'
 #'   `$indiv.rates` = Primary output of interest. Group rate divided between
 #'   individuals. Sum should therefore equal tR. Determined by the function
+#'
+#'   `$input` = origin of `tR` and `units`. Either `manual` entry or
+#'   `convert_rate` object
 #'
 #' @usage split_rate(tR = NULL, masses, b = 0.75, units = NULL)
 #'
