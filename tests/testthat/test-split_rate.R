@@ -44,6 +44,8 @@ expect_warning(split_rate(masses = c(2, 3, 4, 5, 6, 7),
 
 # Test STOPS with respR object with mass-specific rate --------------------
 
+skip_on_appveyor()
+
 library(respR)
 suppressWarnings(
   urch_rate <- urchins.rd %>%
