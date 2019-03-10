@@ -43,12 +43,7 @@ print.split_rate <- function(x, ...) {
     cat("\n")
     }
     cat("\n")
-
-  if(class(x) == "convert_rate")
-    cat(glue("Rate units (from convert_rate object): ", {x$units}))
-    else
     cat(glue("Rate units: ", {x$units}))
-
     cat("\n")
     cat("\n")
 }
