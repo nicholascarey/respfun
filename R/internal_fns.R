@@ -42,3 +42,21 @@ print.split_rate <- function(x, ...) {
 
 
 
+# Internal Functions ------------------------------------------------------
+
+#' Print eff_vol result
+#'
+#' @keywords internal
+#' @importFrom glue glue
+#' @importFrom utils head
+#' @export
+print.eff_vol <- function(x, ...) {
+
+  cat("\n# eff_vol # ----------------------------\n")
+  cat(glue("Effective Volume (L):                     ",
+           {x}))
+  cat("\n")
+}
+
+
+

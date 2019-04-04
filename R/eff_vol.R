@@ -19,8 +19,12 @@
 #'
 #' @section Inputs: Inputs must be in SI units:
 #'
-#'   - Masses in `kg` - Volume in `L` - Density in `kg/m^3` - `t` in °C - `S` in
-#'   ppt - `P` in bar (Defaults to 1.013253)
+#'   - `resp_vol` and `spec_vol` in `L`
+#'   - `spec_mass` in `kg`
+#'   - `spec_density` in `kg/m^3`
+#'   - `t` in °C
+#'   - `S` in ppt
+#'   - `P` in bar (Defaults to 1.013253)
 #'
 #' @section Output: Output is a single numeric value for the effective volume in
 #'   L.
@@ -48,7 +52,7 @@
 #' ## Mass & density to volume subtraction.
 #' eff_vol(resp_vol = 1, spec_mass = 0.2, spec_density = 1026)
 #'
-#' ## Mass, t, S to volume subtraction.
+#' ## Mass, with t, S used to calculate water density
 #' eff_vol(resp_vol = 1, spec_mass = 0.2, t = 10, S = 35)
 #'
 #' @author Nicholas Carey - \email{nicholascarey@gmail.com}
@@ -102,7 +106,7 @@ eff_vol <- function(resp_vol = NULL,
 
   ## simple volume diff
   if(is.numeric(spec_vol)){
-    message("Calculating Effective Volume as resp_vol minus spec_vol \n")
+    message("Calculating Effective Volume as resp_vol minus spec_vol. \n All other inputs IGNORED. ")
     effect_vol <- resp_vol - spec_vol}
 
   ## using density

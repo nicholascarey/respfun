@@ -49,8 +49,12 @@ used unless otherwise specified.
 \section{Inputs}{
  Inputs must be in SI units:
 \itemize{
-\item Masses in \code{kg} - Volume in \code{L} - Density in \code{kg/m^3} - \code{t} in °C - \code{S} in
-ppt - \code{P} in bar (Defaults to 1.013253)
+\item \code{resp_vol} and \code{spec_vol} in \code{L}
+\item \code{spec_mass} in \code{kg}
+\item \code{spec_density} in \code{kg/m^3}
+\item \code{t} in °C
+\item \code{S} in ppt
+\item \code{P} in bar (Defaults to 1.013253)
 }
 }
 
@@ -66,7 +70,7 @@ eff_vol(resp_vol = 1, spec_vol = 0.1)
 ## Mass & density to volume subtraction.
 eff_vol(resp_vol = 1, spec_mass = 0.2, spec_density = 1026)
 
-## Mass, t, S to volume subtraction.
+## Mass, with t, S used to calculate water density
 eff_vol(resp_vol = 1, spec_mass = 0.2, t = 10, S = 35)
 
 }
