@@ -41,19 +41,29 @@ print.split_rate <- function(x, ...) {
 }
 
 
-
-# Internal Functions ------------------------------------------------------
-
 #' Print eff_vol result
 #'
 #' @keywords internal
 #' @importFrom glue glue
-#' @importFrom utils head
 #' @export
 print.eff_vol <- function(x, ...) {
 
   cat("\n# eff_vol # ----------------------------\n")
   cat(glue("Effective Volume (L):                     ",
+           {x}))
+  cat("\n")
+}
+
+
+#' Print spec_density result
+#'
+#' @keywords internal
+#' @importFrom glue glue
+#' @export
+print.spec_density <- function(x, ...) {
+
+  cat("\n# spec_density # -----------------------\n")
+  cat(glue("Specimen Density (kg/m^3):                ",
            {x}))
   cat("\n")
 }
