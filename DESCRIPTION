@@ -15,7 +15,8 @@ LazyData: true
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 Imports:
-    glue
+    glue,
+    marelac
 Suggests: 
     testthat,
     covr,
