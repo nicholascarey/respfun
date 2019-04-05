@@ -16,3 +16,15 @@ expect_is(output,
 
 # test prints
 expect_output(print(output))
+
+# test messages
+expect_error(wm_to_vol(NULL, 1, 1, 1),
+             "Mass is required")
+expect_error(wm_to_vol(1, NULL, 1, 1),
+             "Temperature is required")
+expect_error(wm_to_vol(1, 1, NULL, 1),
+             "Salinity is required")
+expect_error(wm_to_vol(1, 1, 1, NULL),
+             "Atm. Pressure is required")
+expect_message(wm_to_vol(1, 1, 1, 1),
+               "NOTE: Non-default P value being used")
