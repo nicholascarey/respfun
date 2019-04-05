@@ -10,9 +10,11 @@ status](https://ci.appveyor.com/api/projects/status/github/nicholascarey/respfun
 [![Coverage
 status](https://codecov.io/gh/nicholascarey/respfun/branch/master/graph/badge.svg)](https://codecov.io/github/nicholascarey/respfun?branch=master)
 
-This package is a collection of random functions for use with
-respirometry data. More will be added with time. Not intended to be a
-fully featured R package.
+This package is a collection of functions for use with respirometry data
+and experiments. More will be added with time. Not intended to be a
+fully featured R package, just a collection of handy functions. Similar
+functions may be available in other packages and work perfectly well. I
+find it more useful to write my own as a learning exercise.
 
 ### Installation
 
@@ -25,10 +27,10 @@ devtools::install_github("nicholascarey/respfun")
 
 ### Contents
 
-For now there is just one function, `split_rate`. This function divides
-a metabolic rate between a group of individuals based on their masses
-and a metabolic scaling exponent. It was used in this recent
-publication:
+Currently there are four functions. The most advanced one (though that’s
+not saying much) is `split_rate`. This function divides a metabolic rate
+between a group of individuals based on their masses and a metabolic
+scaling exponent. It was used in this recent publication:
 
 *Benjamin P. Burford, Nicholas Carey, William F. Gilly, Jeremy A.
 Goldbogen. 2019. Grouping reduces the metabolic demand of a social
@@ -131,10 +133,62 @@ Output:
     #> 
     #> Rate units: mg/hour
 
+### Additional functions
+
+#### `eff_vol`
+
+This calculates the ‘effective volume’ of a respirometer, that is the
+volume *minus* the volume of the specimen. This allows you to input the
+correct water volume into respirometry analyses in order to calculate
+the correct amount of oxygen used, for example in the
+[`respR::convert_rate`](https://januarharianto.github.io/respR/reference/convert_rate.html)
+function. Specimen volume can be calculated in a number of ways:
+
+  - Entered as an actual volume (if for instance you had measured the
+    displacement volume manually), in which case the effective volume is
+    a simple subtraction.
+
+  - Alternatively, you can enter the specimen mass and density (see
+    `spec_density` below), in which case the volume is calculated and
+    the correction performed using that.
+
+  - Lastly, you can enter the specimen mass and make the assumption the
+    specimen is the same density as the water, in which case
+    temperature, and salinity are required to calculate the density and
+    perform the correction (strictly speaking atmospheric pressure is
+    also required, though in reality has a negligible effect within
+    normal ranges, but it can be specified if desired). This is common
+    in fish respirometry when the specimen is known to be neutrally
+    buoyant, or nearly so. See `?eff_vol` for more.
+
+#### `spec_density`
+
+This function calculates a specimen density from a total wet mass and a
+bouyant mass (see
+[here](https://www.researchgate.net/publication/266911357_Buoyant_weight_technique_Application_to_freshwater_bivalves)).
+This is common in studies of shell bearing species such as molluscs and
+echinoderms where it is a non-lethal way of examining the ratio of shell
+to tissue mass. It can also be used to determine the animal volume for
+correcting respirometry water volumes (see above). The water temperature
+and salinity at which buoyant mass was determined are required. See
+`?spec_density` for more.
+
+#### `wm_to_vol`
+
+This is a simple function to convert a water mass to a water volume.
+Sometimes it is easier to weigh a respirometer to determine the water
+mass than try to measure the volume. This is especially across very
+large size ranges of specimen and respirometer size (e.g. [Carey et
+al. 2016](https://www.dropbox.com/s/d4zp3vm6xakzkts/Carey%20et%20al%20JEB%202016.pdf?dl=0)),
+where systematic error is a concern. The water temperature and salinity
+are required. See `?wm_to_vol` for more.
+
 ### Future functionality
 
 In due course I’ll add a few more functions I find useful in working
 with respirometry and metabolic data.
 
-For analysing your respirometry data check out my other package
-[`respR`](https://github.com/januarharianto/respR).
+### Full respirometry analyses
+
+For analysing your respirometry data check out another package I
+co-developed: [`respR`](https://github.com/januarharianto/respR).

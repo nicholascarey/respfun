@@ -2,7 +2,7 @@ Package: respfun
 Type: Package
 Title: Collection of random functions for use with respirometry data
 Date: 2019-03-07
-Version: 0.1.0
+Version: 0.2.0
 Author: Nicholas Carey
 Maintainer: Nicholas Carey <nicholascarey@gmail.com>
 Description: Collection of random functions for use with respirometry data. More will be added in due course. 
@@ -15,7 +15,8 @@ LazyData: true
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 Imports:
-    glue
+    glue,
+    marelac
 Suggests: 
     testthat,
     covr,
