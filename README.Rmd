@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/nicholascarey/respfun?branch=master&svg=true)](https://ci.appveyor.com/project/nicholascarey/respfun)
 [![Coverage status](https://codecov.io/gh/nicholascarey/respfun/branch/master/graph/badge.svg)](https://codecov.io/github/nicholascarey/respfun?branch=master)
 
-This package is a collection of functions for use with respirometry data and experiments. More will be added with time. Not intended to be a fully featured R package, just a collection of handy functions. Similar functions may be available in other packages and work perfectly well. I find it more useful to write my own as a learning exercise. 
+This package is a collection of functions for use with respirometry data and experiments. More will be added with time. Not intended to be a fully featured R package, just a collection of handy functions. Similar functions may be available in other packages and work perfectly well, I just find it useful to write my own as a learning exercise. 
 
 ### Installation
 `respfun` can be installed using the `devtools` package:
@@ -66,7 +66,6 @@ library(respR)
 ```
 
 ```{r eval = F}
-## Simple example
 library(respR)                                           # Load respR
 
 urchins.rd %>%                                           # NOT a group respirometry experiment,

@@ -13,8 +13,8 @@ status](https://codecov.io/gh/nicholascarey/respfun/branch/master/graph/badge.sv
 This package is a collection of functions for use with respirometry data
 and experiments. More will be added with time. Not intended to be a
 fully featured R package, just a collection of handy functions. Similar
-functions may be available in other packages and work perfectly well. I
-find it more useful to write my own as a learning exercise.
+functions may be available in other packages and work perfectly well, I
+just find it useful to write my own as a learning exercise.
 
 ### Installation
 
@@ -72,7 +72,6 @@ Output:
 ### `respR` Example
 
 ``` r
-## Simple example
 library(respR)                                           # Load respR
 
 urchins.rd %>%                                           # NOT a group respirometry experiment,
