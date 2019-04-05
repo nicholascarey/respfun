@@ -52,16 +52,18 @@ spec_density <- function(wet_mass = NULL,
                          S = NULL,
                          P = 1.013253) {
 
-  if(!is.numeric(wet_mass))
-    stop("Enter a wet_mass")
-  if(!is.numeric(buoy_mass))
-    stop("Enter a buoy_mass")
-  if(!is.numeric(t))
-    stop("Enter a t")
-  if(!is.numeric(S))
-    stop("Enter a S")
-  if(!is.numeric(P))
-    stop("Enter a P")
+  if (is.null(wet_mass))
+    stop("wet_mass is required")
+  if (is.null(buoy_mass))
+    stop("buoy_mass is required")
+  if (is.null(t))
+    stop("Temperature is required")
+  if (is.null(S))
+    stop("Salinity is required")
+  if (is.null(P))
+    stop("Atm. Pressure is required")
+  if (P != 1.013253)
+    message("NOTE: Non-default P value being used")
 
     ## Calc density
     dens <- marelac::sw_dens(t = t, S = S, P = P) /

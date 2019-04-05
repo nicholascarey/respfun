@@ -70,3 +70,15 @@ print.spec_density <- function(x, ...) {
 
 
 
+#' Print spec_density result
+#'
+#' @keywords internal
+#' @importFrom glue glue
+#' @export
+print.wm_to_vol <- function(x, ...) {
+
+  cat("\n# wm_to_vol # --------------------------\n")
+  cat(glue("Water Volume (L):                         ",
+           {x}))
+  cat("\n")
+}
