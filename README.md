@@ -27,10 +27,13 @@ devtools::install_github("nicholascarey/respfun")
 
 ### Contents
 
-Currently there are four functions. The most advanced one (though that’s
-not saying much) is `split_rate`. This function divides a metabolic rate
-between a group of individuals based on their masses and a metabolic
-scaling exponent. It was used in this recent publication:
+Currently there are four functions:
+
+#### `split_rate`
+
+This function divides a metabolic rate between a group of individuals
+based on their masses and a metabolic scaling exponent. It was used in
+this recent publication:
 
 *Benjamin P. Burford, Nicholas Carey, William F. Gilly, Jeremy A.
 Goldbogen. 2019. Grouping reduces the metabolic demand of a social
@@ -42,8 +45,6 @@ This function integrates with the
 saved from the `respR::convert_rate` function can be entered (or `%>%`
 piped), and the rate and units will be automatically extracted.
 
-### Example
-
 ``` r
 ## Simple example
 split_rate(tR = 500,                  # total metabolic rate of group
@@ -51,8 +52,6 @@ split_rate(tR = 500,                  # total metabolic rate of group
            b = 0.75,                  # metabolic scaling exponent
            units = "mg/h")            # units
 ```
-
-Output:
 
     #> 
     #> # split_rate # -------------------------
@@ -132,8 +131,6 @@ Output:
     #> 
     #> Rate units: mg/hour
 
-### Additional functions
-
 #### `eff_vol`
 
 This calculates the ‘effective volume’ of a respirometer, that is the
@@ -141,24 +138,31 @@ volume *minus* the volume of the specimen. This allows you to input the
 correct water volume into respirometry analyses in order to calculate
 the correct amount of oxygen used, for example in the
 [`respR::convert_rate`](https://januarharianto.github.io/respR/reference/convert_rate.html)
-function. Specimen volume can be calculated in a number of ways:
+function.
 
-  - Entered as an actual volume (if for instance you had measured the
-    displacement volume manually), in which case the effective volume is
-    a simple subtraction.
+The respirometer volume (`resp_vol`) can be corrected to get the
+effective volume in a number of ways:
+
+  - A specimen volume (`spec_vol`) can be entered directly (if for
+    instance you have measured the displacement volume separately), in
+    which case the effective volume is a simple subtraction.
 
   - Alternatively, you can enter the specimen mass and density (see
-    `spec_density` below), in which case the volume is calculated and
-    the correction performed using that.
+    `spec_density` function below), in which case the specimen volume is
+    calculated and the correction performed using that. If your specimen
+    is neutrally buoyant you could enter the density of the water here
+    (see next option, seawater density is usually around 1026 kg/m^3)
 
   - Lastly, you can enter the specimen mass and make the assumption the
     specimen is the same density as the water, in which case
-    temperature, and salinity are required to calculate the density and
-    perform the correction (strictly speaking atmospheric pressure is
-    also required, though in reality has a negligible effect within
-    normal ranges, but it can be specified if desired). This is common
-    in fish respirometry when the specimen is known to be neutrally
-    buoyant, or nearly so. See `?eff_vol` for more.
+    temperature, and salinity are required to calculate the water
+    density and perform the correction (strictly speaking atmospheric
+    pressure is also required; in reality it has a negligible effect
+    within normal ranges, but the default value can be changed if
+    desired). This is common in fish respirometry when the specimen is
+    known to be neutrally buoyant, or nearly so.
+
+See `?eff_vol` for more.
 
 #### `spec_density`
 
@@ -176,8 +180,8 @@ and salinity at which buoyant mass was determined are required. See
 
 This is a simple function to convert a water mass to a water volume.
 Sometimes it is easier to weigh a respirometer to determine the water
-mass than try to measure the volume. This is especially across very
-large size ranges of specimen and respirometer size (e.g. [Carey et
+mass than try to measure the volume, for example across large size
+ranges of specimen and respirometer size (e.g. [Carey et
 al. 2016](https://www.dropbox.com/s/d4zp3vm6xakzkts/Carey%20et%20al%20JEB%202016.pdf?dl=0)),
 where systematic error is a concern. The water temperature and salinity
 are required. See `?wm_to_vol` for more.
@@ -185,7 +189,7 @@ are required. See `?wm_to_vol` for more.
 ### Future functionality
 
 In due course I’ll add a few more functions I find useful in working
-with respirometry and metabolic data.
+with respirometry and metabolic rate data.
 
 ### Full respirometry analyses
 
