@@ -138,8 +138,9 @@ The respirometer volume (`resp_vol`) can be corrected to get the
 effective volume in a number of ways:
 
   - A specimen volume (`spec_vol`) can be entered directly (if for
-    instance you have measured the displacement volume separately), in
-    which case the effective volume is a simple subtraction.
+    instance you have calculated it geometrically or measured the
+    displacement volume separately), in which case the effective volume
+    is a simple subtraction.
 
   - Alternatively, you can enter the specimen mass and density (see
     `spec_density` function below), in which case the specimen volume is
