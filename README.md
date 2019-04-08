@@ -1,7 +1,16 @@
+`respfun`
+================
+
+  - [Installation](#installation)
+  - [Functions](#functions)
+      - [`split_rate`](#split_rate)
+      - [`eff_vol`](#eff_vol)
+      - [`spec_density`](#spec_density)
+      - [`wm_to_vol`](#wm_to_vol)
+  - [Future functionality](#future-functionality)
+  - [Full respirometry analyses](#full-respirometry-analyses)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# respfun
 
 [![Travis build
 status](https://travis-ci.org/nicholascarey/respfun.svg?branch=master)](https://travis-ci.org/nicholascarey/respfun)
@@ -14,7 +23,7 @@ This package is a collection of functions for use with respirometry data
 and experiments. More will be added with time. Not intended to be a
 fully featured R package, just a collection of handy functions. Similar
 functions may be available in other packages and work perfectly well, I
-just find it useful to write my own as a learning exercise.
+just like writing my own as a learning exercise.
 
 ### Installation
 
@@ -25,7 +34,7 @@ install.packages("devtools")
 devtools::install_github("nicholascarey/respfun")
 ```
 
-### Contents
+### Functions
 
 Currently there are four functions:
 
@@ -68,7 +77,7 @@ split_rate(tR = 500,                  # total metabolic rate of group
     #> 
     #> Rate units: mg/h
 
-### `respR` Example
+##### `respR` Example
 
 ``` r
 library(respR)                                           # Load respR
