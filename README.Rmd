@@ -117,7 +117,7 @@ The respirometer volume (`resp_vol`) can be corrected to get the effective volum
 
 - A specimen volume (`spec_vol`) can be entered directly (if for instance you have measured the displacement volume separately), in which case the effective volume is a simple subtraction.   
 
-- Alternatively, you can enter the specimen mass and density (see `spec_density` function below), in which case the specimen volume is calculated and the correction performed using that. If your specimen is neutrally buoyant you could enter the density of the water here (see next option, seawater density is usually around 1026 kg/m^3)
+- Alternatively, you can enter the specimen mass and density (see `spec_density` function below), in which case the specimen volume is calculated and the correction performed using that. If your specimen is neutrally buoyant you could enter the density of the water here (seawater density is usually around 1026 kg/m^3, but see next option for precise calculation).
 
 - Lastly, you can enter the specimen mass and make the assumption the specimen is the same density as the water, in which case temperature, and salinity are required to calculate the water density and perform the correction (strictly speaking atmospheric pressure is also required; in reality it has a negligible effect within normal ranges, but the default value can be changed if desired). This is common in fish respirometry when the specimen is known to be neutrally buoyant, or nearly so. 
 

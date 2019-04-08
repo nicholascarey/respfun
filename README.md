@@ -160,7 +160,8 @@ effective volume in a number of ways:
     `spec_density` function below), in which case the specimen volume is
     calculated and the correction performed using that. If your specimen
     is neutrally buoyant you could enter the density of the water here
-    (see next option, seawater density is usually around 1026 kg/m^3)
+    (seawater density is usually around 1026 kg/m^3, but see next option
+    for precise calculation).
 
   - Lastly, you can enter the specimen mass and make the assumption the
     specimen is the same density as the water, in which case
