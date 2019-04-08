@@ -164,13 +164,13 @@ effective volume in a number of ways:
     for precise calculation).
 
   - Lastly, you can enter the specimen mass and make the assumption the
-    specimen is the same density as the water, in which case
-    temperature, and salinity are required to calculate the water
-    density and perform the correction (strictly speaking atmospheric
-    pressure is also required; in reality it has a negligible effect
-    within normal ranges, but the default value can be changed if
-    desired). This is common in fish respirometry when the specimen is
-    known to be neutrally buoyant, or nearly so.
+    specimen is the same density as the water, in which case temperature
+    and salinity are required to calculate the water density and perform
+    the correction (strictly speaking atmospheric pressure is also
+    required; in reality it has a negligible effect within normal
+    ranges, although the default value can be changed if desired). This
+    is common in fish respirometry when the specimen is known to be
+    neutrally buoyant, or nearly so.
 
 See `?eff_vol` for more.
 
