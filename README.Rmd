@@ -1,5 +1,9 @@
 ---
-output: github_document
+title: "`respfun`"
+output:
+  github_document:
+    toc: true
+    toc_depth: 4
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -12,13 +16,12 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# respfun
 
 [![Travis build status](https://travis-ci.org/nicholascarey/respfun.svg?branch=master)](https://travis-ci.org/nicholascarey/respfun)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/nicholascarey/respfun?branch=master&svg=true)](https://ci.appveyor.com/project/nicholascarey/respfun)
 [![Coverage status](https://codecov.io/gh/nicholascarey/respfun/branch/master/graph/badge.svg)](https://codecov.io/github/nicholascarey/respfun?branch=master)
 
-This package is a collection of functions for use with respirometry data and experiments. More will be added with time. Not intended to be a fully featured R package, just a collection of handy functions. Similar functions may be available in other packages and work perfectly well, I just find it useful to write my own as a learning exercise. 
+This package is a collection of functions for use with respirometry data and experiments. More will be added with time. Not intended to be a fully featured R package, just a collection of handy functions. Similar functions may be available in other packages and work perfectly well, I just like writing my own as a learning exercise. 
 
 ### Installation
 `respfun` can be installed using the `devtools` package:
@@ -28,7 +31,7 @@ install.packages("devtools")
 devtools::install_github("nicholascarey/respfun")
 ```
 
-### Contents
+### Functions
 
 Currently there are four functions:
 
@@ -62,7 +65,7 @@ split_rate(tR = 500,                  # total metabolic rate of group
            units = "mg/h")            # units
 ```
 
-### `respR` Example
+##### `respR` Example
 ```{r echo = F}
 library(respR)
 ```
