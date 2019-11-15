@@ -63,5 +63,5 @@ scale_rate(20, mass = 2, new.mass = 1, b = 1)
 
 }
 \author{
-Nicholas Carey - \link{nicholascarey@gmail.com}
+Nicholas Carey - \email{nicholascarey@gmail.com}
 }

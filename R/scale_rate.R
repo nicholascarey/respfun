@@ -50,7 +50,7 @@
 #' scale_rate(5, mass = 0.5, new.mass = 1, b = 1)
 #' scale_rate(20, mass = 2, new.mass = 1, b = 1)
 #'
-#' @author Nicholas Carey - \link{nicholascarey@gmail.com}
+#' @author Nicholas Carey - \email{nicholascarey@gmail.com}
 #'
 #' @export
 
