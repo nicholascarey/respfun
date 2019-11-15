@@ -188,7 +188,7 @@ are required. See `?wm_to_vol` for more.
 
 This function scales a physiological rate to a different body mass using
 a scaling exponent. Works with both absolute (i.e. whole animal) and
-mass-specific rates. See `?wm_to_vol` for more.
+mass-specific rates. See `?scale_rate` for more.
 
 #### `q_ten`
 

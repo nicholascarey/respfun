@@ -128,7 +128,7 @@ See `?wm_to_vol` for more.
 
 #### `scale_rate`
 This function scales a physiological rate to a different body mass using a scaling exponent. Works with both absolute (i.e. whole animal) and mass-specific rates. 
-See `?wm_to_vol` for more. 
+See `?scale_rate` for more. 
 
 #### `q_ten`
 Calculates any of the five parameters in the Q10 temperature relationship for physiological or chemical processes. Q10 describes the ratio by which a physiological or chemical rate changes with a 10°C increase in temperature. Essentially the same as the `Q10` function in the [`respirometry`](https://cran.r-project.org/web/packages/respirometry/index.html) package by Matthew Birk, although that has additional functionality for determining the best fit Q10 for a range of rates/temperatures. 
