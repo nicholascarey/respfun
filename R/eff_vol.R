@@ -98,9 +98,6 @@ eff_vol <- function(resp_vol = NULL,
     effect_vol <- resp_vol - (spec_mass * (spec_density/1000))
     }
 
-  ## set class
-  class(effect_vol) <- "eff_vol"
-
   ## return
   return(effect_vol)
 

@@ -3,9 +3,9 @@
 #' Print split_rate result
 #'
 #' @keywords internal
+#' @export
 #' @importFrom glue glue
 #' @importFrom utils head
-#' @export
 print.split_rate <- function(x, ...) {
 
   rates <- x$indiv.rates
@@ -41,44 +41,4 @@ print.split_rate <- function(x, ...) {
 }
 
 
-#' Print eff_vol result
-#'
-#' @keywords internal
-#' @importFrom glue glue
-#' @export
-print.eff_vol <- function(x, ...) {
 
-  cat("\n# eff_vol # ----------------------------\n")
-  cat(glue("Effective Volume (L):                     ",
-           {x}))
-  cat("\n")
-}
-
-
-#' Print spec_density result
-#'
-#' @keywords internal
-#' @importFrom glue glue
-#' @export
-print.spec_density <- function(x, ...) {
-
-  cat("\n# spec_density # -----------------------\n")
-  cat(glue("Specimen Density (kg/m^3):                ",
-           {x}))
-  cat("\n")
-}
-
-
-
-#' Print spec_density result
-#'
-#' @keywords internal
-#' @importFrom glue glue
-#' @export
-print.wm_to_vol <- function(x, ...) {
-
-  cat("\n# wm_to_vol # --------------------------\n")
-  cat(glue("Water Volume (L):                         ",
-           {x}))
-  cat("\n")
-}
