@@ -63,26 +63,6 @@
 #'
 #' @export
 
-
-## Volume to Effective volume (V – D × m)
-
-## V is Volume of a chamber/the whole system (L), m - mass of fish (kg), D is
-## the density of an animal body (by default = 1000 kg/m3)
-
-# volume <- 1
-# mass <- 0.1
-# density <- 1
-#
-# resp_vol <- 1
-# spec_vol <- 0.15
-# spec_mass <- 0.33
-# density <- NULL
-# density <- 0.33
-# t = NULL
-# t = 1
-# S = NULL
-# S = 2
-
 eff_vol <- function(resp_vol = NULL,
                     spec_vol = NULL,
                     spec_mass = NULL,
@@ -117,9 +97,6 @@ eff_vol <- function(resp_vol = NULL,
 
     effect_vol <- resp_vol - (spec_mass * (spec_density/1000))
     }
-
-  ## set class
-  class(effect_vol) <- "eff_vol"
 
   ## return
   return(effect_vol)

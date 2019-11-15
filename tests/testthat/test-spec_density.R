@@ -12,10 +12,8 @@ expect_equal(round(as.numeric(output), 3),
 
 # test class
 expect_is(output,
-          "spec_density")
+          "numeric")
 
-# test prints
-expect_output(print(output))
 
 # test messages
 expect_error(spec_density(NULL, 1, 0, 1, 1),

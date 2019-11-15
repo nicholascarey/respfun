@@ -15,10 +15,8 @@ expect_equal(as.numeric(output),
 
 # test class
 expect_is(output,
-          "eff_vol")
+          "numeric")
 
-# test prints
-expect_output(print(output))
 
 # test messages
 expect_error(eff_vol(NULL, 1, 1, 1, 1, 1, 1),
@@ -44,3 +42,4 @@ output <- eff_vol(resp_vol = 0.25,
 
 expect_equal(round(as.numeric(output),6),
              0.149929)
+

@@ -7,6 +7,8 @@
       - [`eff_vol`](#eff_vol)
       - [`spec_density`](#spec_density)
       - [`wm_to_vol`](#wm_to_vol)
+      - [`scale_rate`](#scale_rate)
+      - [`q_ten`](#q_ten)
   - [Future functionality](#future-functionality)
   - [Full respirometry analyses](#full-respirometry-analyses)
 
@@ -20,10 +22,11 @@ status](https://ci.appveyor.com/api/projects/status/github/nicholascarey/respfun
 status](https://codecov.io/gh/nicholascarey/respfun/branch/master/graph/badge.svg)](https://codecov.io/github/nicholascarey/respfun?branch=master)
 
 This package is a collection of functions for use with respirometry data
-and experiments. More will be added with time. Not intended to be a
-fully featured R package, just a collection of handy functions. Similar
-functions may be available in other packages and work perfectly well, I
-just like writing my own as a learning exercise.
+and experiments. I will add to it periodically (suggestions
+[welcome](https://github.com/nicholascarey/respfun/issues)). It is not
+intended to be a fully featured R package, more a collection of handy
+functions. Similar functions are available in other packages and work
+perfectly well, I just like writing my own as a learning exercise.
 
 ### Installation
 
@@ -36,7 +39,7 @@ devtools::install_github("nicholascarey/respfun")
 
 ### Functions
 
-Currently there are four functions:
+Currently there are six functions:
 
 #### `split_rate`
 
@@ -120,8 +123,7 @@ urchins.rd %>%                                           # NOT a group respirome
     #> [1] 2 3 4 5 6 7 8
     #> 
     #> Individual rates (indiv.rates, calculated): 
-    #> [1] -0.1040113 -0.1409772 -0.1749254 -0.2067928 -0.2370945 -0.2661531
-    #> [7] -0.2941883
+    #> [1] -0.1040113 -0.1409772 -0.1749254 -0.2067928 -0.2370945 -0.2661531 -0.2941883
     #> 
     #> Rate units: mg/hour
 
@@ -182,10 +184,30 @@ al. 2016](https://www.dropbox.com/s/d4zp3vm6xakzkts/Carey%20et%20al%20JEB%20201
 where systematic error is a concern. The water temperature and salinity
 are required. See `?wm_to_vol` for more.
 
+#### `scale_rate`
+
+This function scales a physiological rate to a different body mass using
+a scaling exponent. Works with both absolute (i.e. whole animal) and
+mass-specific rates. See `?scale_rate` for more.
+
+#### `q_ten`
+
+Calculates any of the five parameters in the Q10 temperature
+relationship for physiological or chemical processes. Q10 describes the
+ratio by which a physiological or chemical rate changes with a 10°C
+increase in temperature. Essentially the same as the `Q10` function in
+the
+[`respirometry`](https://cran.r-project.org/web/packages/respirometry/index.html)
+package by Matthew Birk, although that has additional functionality for
+determining the best fit Q10 for a range of rates/temperatures. See
+`?q_ten` for more.
+
 ### Future functionality
 
 In due course I’ll add a few more functions I find useful in working
-with respirometry and metabolic rate data.
+with respirometry and metabolic rate data. Suggestions for additional
+functions are welcome via [email](mailto:nicholascarey@gmail.com), or by
+[opening an issue](https://github.com/nicholascarey/respfun/issues).
 
 ### Full respirometry analyses
 

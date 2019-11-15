@@ -69,9 +69,6 @@ spec_density <- function(wet_mass = NULL,
     dens <- marelac::sw_dens(t = t, S = S, P = P) /
                           (1 - buoy_mass / wet_mass)
 
-    ## Assign class
-    class(dens) <- "spec_density"
-
     ## Return
     return(dens)
 }

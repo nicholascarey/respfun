@@ -13,7 +13,7 @@ split_rate(tR = NULL, masses, b = 0.75, units = NULL)
 
 \item{b}{numeric. Metabolic scaling exponent}
 
-\item{units}{string. Units of the rate. Extracted from convert_rate object or
+\item{units}{string. Units of the rate. Extracted from \code{convert_rate} object or
 can be entered by the user. For information only, does not affect any
 calculations.}
 }
@@ -71,22 +71,22 @@ rates should be divided in this way.
 \section{Output}{
  Output is a \code{list} object containing 7 elements:
 
-\code{$a} = \code{a}, the intercept in the mass~rate power equation. Determined by
+\verb{$a} = \code{a}, the intercept in the mass~rate power equation. Determined by
 the function.
 
-\code{$b} = \code{b}, the exponent in the mass~rate power equation. User entered.
+\verb{$b} = \code{b}, the exponent in the mass~rate power equation. User entered.
 
-\code{$tR} = total group rate. User entered.
+\verb{$tR} = total group rate. User entered.
 
-\code{$masses} = specimen masses. User entered.
+\verb{$masses} = specimen masses. User entered.
 
-\code{$units} = units of the rate. User entered or extracted from \code{convert_rate}
+\verb{$units} = units of the rate. User entered or extracted from \code{convert_rate}
 object. For information only, does not affect any calculations.
 
-\code{$indiv.rates} = Primary output of interest. Group rate divided between
+\verb{$indiv.rates} = Primary output of interest. Group rate divided between
 individuals. Sum should therefore equal tR. Determined by the function
 
-\code{$input} = origin of \code{tR} and \code{units}. Either \code{manual} entry or
+\verb{$input} = origin of \code{tR} and \code{units}. Either \code{manual} entry or
 \code{convert_rate} object
 }
 

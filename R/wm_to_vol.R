@@ -53,9 +53,6 @@ wm_to_vol <- function(mass = NULL, t = NULL, S = NULL, P = 1.013253) {
   ## Convert mass to volume
   vol <- mass / dens
 
-  ## Assign class
-  class(vol) <- "wm_to_vol"
-
   ## Return
   return(vol)
 }
