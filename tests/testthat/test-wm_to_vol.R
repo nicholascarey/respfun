@@ -12,10 +12,7 @@ expect_equal(round(as.numeric(output), 3),
 
 # test class
 expect_is(output,
-          "wm_to_vol")
-
-# test prints
-expect_output(print(output))
+          "numeric")
 
 # test messages
 expect_error(wm_to_vol(NULL, 1, 1, 1),
@@ -28,3 +25,4 @@ expect_error(wm_to_vol(1, 1, 1, NULL),
              "Atm. Pressure is required")
 expect_message(wm_to_vol(1, 1, 1, 1),
                "NOTE: Non-default P value being used")
+

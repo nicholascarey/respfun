@@ -1,5 +1,9 @@
 ---
-output: github_document
+title: "`respfun`"
+output:
+  github_document:
+    toc: true
+    toc_depth: 4
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -12,13 +16,12 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# respfun
 
 [![Travis build status](https://travis-ci.org/nicholascarey/respfun.svg?branch=master)](https://travis-ci.org/nicholascarey/respfun)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/nicholascarey/respfun?branch=master&svg=true)](https://ci.appveyor.com/project/nicholascarey/respfun)
 [![Coverage status](https://codecov.io/gh/nicholascarey/respfun/branch/master/graph/badge.svg)](https://codecov.io/github/nicholascarey/respfun?branch=master)
 
-This package is a collection of functions for use with respirometry data and experiments. More will be added with time. Not intended to be a fully featured R package, just a collection of handy functions. Similar functions may be available in other packages and work perfectly well, I just find it useful to write my own as a learning exercise. 
+This package is a collection of functions for use with respirometry data and experiments. I will add to it periodically (suggestions [welcome](https://github.com/nicholascarey/respfun/issues)). It is not intended to be a fully featured R package, more a collection of handy functions. Similar functions are available in other packages and work perfectly well, I just like writing my own as a learning exercise. 
 
 ### Installation
 `respfun` can be installed using the `devtools` package:
@@ -28,9 +31,9 @@ install.packages("devtools")
 devtools::install_github("nicholascarey/respfun")
 ```
 
-### Contents
+### Functions
 
-Currently there are four functions:
+Currently there are six functions:
 
 #### `split_rate`
 
@@ -48,6 +51,7 @@ library(respfun)
 
 ```{r eval = F}
 ## Simple example
+
 split_rate(tR = 500,                  # total metabolic rate of group
            masses = c(2, 3, 4, 5, 6), # body masses
            b = 0.75,                  # metabolic scaling exponent
@@ -56,28 +60,26 @@ split_rate(tR = 500,                  # total metabolic rate of group
 
 ```{r eval = T, echo = F}
 ## Simple example
+
 split_rate(tR = 500,                  # total metabolic rate of group
            masses = c(2, 3, 4, 5, 6), # body masses
            b = 0.75,                  # metabolic scaling exponent
            units = "mg/h")            # units
 ```
 
-### `respR` Example
 ```{r echo = F}
 library(respR)
 ```
 
 ```{r eval = F}
+## respR example
+
 library(respR)                                           # Load respR
 
 urchins.rd %>%                                           # NOT a group respirometry experiment,
                                                           # - Just using it as an example,
   inspect(1, 15) %>%                                     # inspect
   calc_rate(from = 4, to = 29, by = "time") %>%          # calculate rate
-  print() %>%
-  adjust_rate(
-    calc_rate.bg(urchins.rd, xcol = 1, ycol = 18:19,     # adjust for background
-                 from = 5, to = 40, by = "time")) %>%
   print() %>%
   convert_rate(o2.unit = "mgl-1", time.unit = "m",       # convert
                output.unit = "mg/h", volume = 1.09) %>%
@@ -86,7 +88,7 @@ urchins.rd %>%                                           # NOT a group respirome
   print()
 
 ```
-Output:
+
 ```{r eval = T, echo = F, fig.keep = "none", warning = FALSE}
 library(respR)
 
@@ -94,10 +96,6 @@ urchins.rd %>%                                           # NOT a group respirome
                                                           # - Just using it as an example,
   inspect(1, 15) %>%                                     # inspect
   calc_rate(from = 4, to = 29, by = "time") %>%          # calculate rate
-  print() %>%
-  adjust_rate(
-    calc_rate.bg(urchins.rd, xcol = 1, ycol = 18:19,     # adjust for background
-                 from = 5, to = 40, by = "time")) %>%
   print() %>%
   convert_rate(o2.unit = "mgl-1", time.unit = "m",       # convert
                output.unit = "mg/h", volume = 1.09) %>%
@@ -112,11 +110,11 @@ This calculates the 'effective volume' of a respirometer, that is the volume *mi
 
 The respirometer volume (`resp_vol`) can be corrected to get the effective volume in a number of ways:  
 
-- A specimen volume (`spec_vol`) can be entered directly (if for instance you have measured the displacement volume separately), in which case the effective volume is a simple subtraction.   
+- A specimen volume (`spec_vol`) can be entered directly (if for instance you have calculated it geometrically or measured the displacement volume separately), in which case the effective volume is a simple subtraction.   
 
-- Alternatively, you can enter the specimen mass and density (see `spec_density` function below), in which case the specimen volume is calculated and the correction performed using that. If your specimen is neutrally buoyant you could enter the density of the water here (see next option, seawater density is usually around 1026 kg/m^3)
+- Alternatively, you can enter the specimen mass and density (see `spec_density` function below), in which case the specimen volume is calculated and the correction performed using that. If your specimen is neutrally buoyant you could enter the density of the water here (seawater density is usually around 1026 kg/m^3, but see next option for precise calculation).
 
-- Lastly, you can enter the specimen mass and make the assumption the specimen is the same density as the water, in which case temperature, and salinity are required to calculate the water density and perform the correction (strictly speaking atmospheric pressure is also required; in reality it has a negligible effect within normal ranges, but the default value can be changed if desired). This is common in fish respirometry when the specimen is known to be neutrally buoyant, or nearly so. 
+- Lastly, you can enter the specimen mass and make the assumption the specimen is the same density as the water, in which case temperature and salinity are required to calculate the water density and perform the correction (strictly speaking atmospheric pressure is also required; in reality it has a negligible effect within normal ranges, although the default value can be changed if desired). This is common in fish respirometry when the specimen is known to be neutrally buoyant, or nearly so. 
 
 See `?eff_vol` for more. 
 
@@ -128,8 +126,16 @@ See `?spec_density` for more.
 This is a simple function to convert a water mass to a water volume. Sometimes it is easier to weigh a respirometer to determine the water mass than try to measure the volume, for example across large size ranges of specimen and respirometer size (e.g. [Carey et al. 2016](https://www.dropbox.com/s/d4zp3vm6xakzkts/Carey%20et%20al%20JEB%202016.pdf?dl=0)), where systematic error is a concern. The water temperature and salinity are required.
 See `?wm_to_vol` for more. 
 
+#### `scale_rate`
+This function scales a physiological rate to a different body mass using a scaling exponent. Works with both absolute (i.e. whole animal) and mass-specific rates. 
+See `?scale_rate` for more. 
+
+#### `q_ten`
+Calculates any of the five parameters in the Q10 temperature relationship for physiological or chemical processes. Q10 describes the ratio by which a physiological or chemical rate changes with a 10°C increase in temperature. Essentially the same as the `Q10` function in the [`respirometry`](https://cran.r-project.org/web/packages/respirometry/index.html) package by Matthew Birk, although that has additional functionality for determining the best fit Q10 for a range of rates/temperatures. 
+See `?q_ten` for more. 
+
 ### Future functionality
-In due course I'll add a few more functions I find useful in working with respirometry and metabolic rate data.
+In due course I'll add a few more functions I find useful in working with respirometry and metabolic rate data. Suggestions for additional functions are welcome via [email](mailto:nicholascarey@gmail.com), or by [opening an issue](https://github.com/nicholascarey/respfun/issues).
 
 ### Full respirometry analyses
 For analysing your respirometry data check out another package I co-developed: [`respR`](https://github.com/januarharianto/respR). 

@@ -70,7 +70,7 @@
 #' @param tR numeric. Total group metabolic rate
 #' @param masses numeric. A vector of body masses of all individuals in group
 #' @param b numeric. Metabolic scaling exponent
-#' @param units string. Units of the rate. Extracted from convert_rate object or
+#' @param units string. Units of the rate. Extracted from `convert_rate` object or
 #'   can be entered by the user. For information only, does not affect any
 #'   calculations.
 #'
