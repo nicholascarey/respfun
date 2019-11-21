@@ -9,15 +9,15 @@ scale_rate(rate, mass, new.mass, b)
 \arguments{
 \item{rate}{numeric. The physiological rate to be scaled.}
 
-\item{mass}{numeric. Original mass of specimen.}
+\item{mass}{numeric. Original mass at which the \code{rate} was determined.}
 
-\item{new.mass}{numeric. The new mass the rate to scale the rate to.}
+\item{new.mass}{numeric. The new mass the \code{rate} is being scaled to.}
 
-\item{b}{numeric. Scaling exponent. Must be the correct one for the rate -
-see Details.}
+\item{b}{numeric. Scaling exponent. Must be the correct one for the \code{rate}
+used. See Details.}
 }
 \value{
-numeric. New mass-specific rate at chosen mass
+numeric. New rate scaled to chosen mass
 }
 \description{
 \code{scale_rate} - Scales a physiological rate (absolute or
@@ -28,7 +28,7 @@ Physiological rates typically scale allometrically with body mass.
 Therefore, it is usually not appropriate to directly compare rates between
 individuals of different size. Instead, if the scaling exponent of the rate
 (either absolute or mass-specific) is known, this can be used to scale
-rates to a common mass for comparison.
+rates to a common mass for comparison or statistical testing.
 
 \code{scale_rate} scales an absolute (i.e. whole animal) or mass-specific
 physiological rate (e.g. metabolic, feeding) to a specified body mass,
@@ -42,16 +42,24 @@ exponent for the \code{rate} as entered, INCLUDING THE -/+ SIGN.
 The scaled rate is calculated as \verb{((new mass/actual mass) ^ b) * rate}.
 }
 \examples{
-## Scaling a whole animal metabolic rate. Here the rate is in mg/h, the
-## metabolic scaling exponent is 0.72, and we are scaling the rate to 1g.
-## Should result in new scaled rate of 1.055
-scale_rate(0.1784, mass = 0.0847, new.mass = 1, b = 0.72)
+## Scaling a whole animal metabolic rate.
+## Here the rate is in mg/h, the metabolic scaling exponent is 0.72, and
+## we are scaling the rate to 0.5g.
+scale_rate(0.1784, mass = 0.0847, new.mass = 0.5, b = 0.72)
+
+## Result = 0.6406 mg/h at 0.5g
 
 ## Here the exact same calculation is done using the mass-specific
-## metabolic rate (in mg/h/g of body mass), and the metabolic scaling
-## exponent is the mass-specific one (the negative difference from 1 of
-## the absolute scaling exponent).
-scale_rate(2.1062, mass = 0.0847, new.mass = 1, b = -0.28)
+## metabolic rate (0.1784/0.0847 = 2.1063 mg/h/g), and the mass-specific
+## metabolic scaling exponent (the negative difference from 1 of the
+## absolute scaling exponent).
+scale_rate(2.1063, mass = 0.0847, new.mass = 0.5, b = -0.28)
+
+## Result = 1.2812 mg/h/g at 0.5g
+
+## We can see this is the same result as in the first example if it is
+## expressed as a mass-specific rate:
+## 0.6406/0.5 = 1.2812 mg/h/g
 
 ## Obviously, scaling a rate to the same mass will give the same rate.
 scale_rate(32.55, mass = 1, new.mass = 1, b = 0.75)
