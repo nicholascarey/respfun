@@ -65,9 +65,14 @@ scale_rate(2.1063, mass = 0.0847, new.mass = 0.5, b = -0.28)
 scale_rate(32.55, mass = 1, new.mass = 1, b = 0.75)
 
 ## And these demonstrate that isometric (i.e. purely linear) scaling of
-## a rate will do a simple multiplication/division.
+## an absolute rate will do a simple multiplication/division.
 scale_rate(5, mass = 0.5, new.mass = 1, b = 1)
 scale_rate(20, mass = 2, new.mass = 1, b = 1)
+
+## Isometric scaling when the rate is expressed as a mass-specific rate
+## is represented by a scaling exponent of zero. In this case the
+## mass-specific rate will be the same at any other body mass.
+scale_rate(4.77, mass = 2.5, new.mass = 18.3, b = 0)
 
 }
 \author{
