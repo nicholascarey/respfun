@@ -18,17 +18,33 @@
 #'   rates between -0.33 to 0. Therefore, make sure you use the correct scaling
 #'   exponent for the `rate` as entered, INCLUDING THE -/+ SIGN.
 #'
-#'   The scaled rate is calculated as `((new mass/actual mass) ^ b) * rate`.
+#' @section `respR` integration: For the `rate` input the function accepts
+#'   objects saved (or piped) from the \code{respR}
+#'   (\url{https://github.com/januarharianto/respR}) `convert_rate` function. In
+#'   this case, the rate (absolute or mass-specific) is automatically extracted.
+#'
+#' @section Sign of the `rate`: NOTE: both negative and positive rates can be
+#'   entered. In respirometry experiments, rates are typically reported as
+#'   positive values. These can be entered as is. In the case of
+#'   `respR::convert_rate` objects, extracted rates will typically be
+#'   *negative*, and these are left unchanged in the `split_rate` function. In
+#'   `respR`, to be mathematically consistent (since they represent oxygen
+#'   depletion), respiration rates are represented by negative slopes, and
+#'   therefore rates returned as negative. You can enter the `rate`` as the
+#'   usually reported postive value, or as a negative: the function will work
+#'   with either.
+#'
+#' @section Calculation: The scaled rate is calculated as: `((new mass/actual
+#'   mass) ^ b) * rate`.
 #'
 #' @usage scale_rate(rate, mass, new.mass, b)
 #'
-#' @param rate numeric. The physiological rate to be scaled.
+#' @param rate numeric. The physiological rate to be scaled. Also accepts
+#'   `respR::convert_rate` objects.
 #' @param mass numeric. Original mass at which the `rate` was determined.
 #' @param new.mass numeric. The new mass the `rate` is being scaled to.
 #' @param b numeric. Scaling exponent. Must be the correct one for the `rate`
 #'   used. See Details.
-#'
-#' @return numeric. New rate scaled to chosen mass
 #'
 #' @examples
 #' ## Scaling a whole animal metabolic rate.
@@ -47,7 +63,7 @@
 #' ## Result = 1.2812 mg/h/g at 0.5g
 #'
 #' ## We can see this is the same result as in the first example if it is
-#' ## expressed as a mass-specific rate:
+#' ## expressed as a mass-specific rate at the mass it is scaled to (0.5g):
 #' ## 0.6406/0.5 = 1.2812 mg/h/g
 #'
 #' ## Obviously, scaling a rate to the same mass will give the same rate.
@@ -68,6 +84,10 @@
 #' @export
 
 scale_rate <- function(rate = NULL, mass = NULL, new.mass = NULL, b = NULL) {
+
+  if(class(rate) == "convert_rate"){
+    rate <- rate$output
+    message("--- respR::convert_rate object detected ---\n")}
 
   if(length(c(rate, mass, new.mass, b)) != 4) stop("All four inputs are required.")
 

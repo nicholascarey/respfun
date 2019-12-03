@@ -2,6 +2,7 @@
 
 S3method(print,split_rate)
 export(eff_vol)
+export(flush_time)
 export(q_ten)
 export(scale_rate)
 export(spec_density)
