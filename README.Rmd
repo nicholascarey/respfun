@@ -33,7 +33,7 @@ devtools::install_github("nicholascarey/respfun")
 
 ### Functions
 
-Currently there are six functions:
+Currently there are seven functions:
 
 #### `split_rate`
 
@@ -127,12 +127,16 @@ This is a simple function to convert a water mass to a water volume. Sometimes i
 See `?wm_to_vol` for more. 
 
 #### `scale_rate`
-This function scales a physiological rate to a different body mass using a scaling exponent. Works with both absolute (i.e. whole animal) and mass-specific rates. 
+This function scales a physiological rate to a different body mass using a scaling exponent. Works with both absolute (i.e. whole animal) and mass-specific rates. This function integrates with the [`respR`](https://github.com/januarharianto/respR) package: objects saved from the `respR::convert_rate` function can be entered (or `%>%` piped), and the rate will be automatically extracted. 
 See `?scale_rate` for more. 
 
 #### `q_ten`
 Calculates any of the five parameters in the Q10 temperature relationship for physiological or chemical processes. Q10 describes the ratio by which a physiological or chemical rate changes with a 10°C increase in temperature. Essentially the same as the `Q10` function in the [`respirometry`](https://cran.r-project.org/web/packages/respirometry/index.html) package by Matthew Birk, although that has additional functionality for determining the best fit Q10 for a range of rates/temperatures. 
 See `?q_ten` for more. 
+
+#### `flush_time`
+Calculates the time taken to flush a respirometer with new water. It requires the volume of the respirometer (in L) and the flow rate (in L/s) of the input of new water. 
+See `?flush_time` for more. 
 
 ### Future functionality
 In due course I'll add a few more functions I find useful in working with respirometry and metabolic rate data. Suggestions for additional functions are welcome via [email](mailto:nicholascarey@gmail.com), or by [opening an issue](https://github.com/nicholascarey/respfun/issues).

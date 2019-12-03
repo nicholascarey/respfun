@@ -7,7 +7,8 @@
 scale_rate(rate, mass, new.mass, b)
 }
 \arguments{
-\item{rate}{numeric. The physiological rate to be scaled.}
+\item{rate}{numeric. The physiological rate to be scaled. Also accepts
+\code{respR::convert_rate} objects.}
 
 \item{mass}{numeric. Original mass at which the \code{rate} was determined.}
 
@@ -15,9 +16,6 @@ scale_rate(rate, mass, new.mass, b)
 
 \item{b}{numeric. Scaling exponent. Must be the correct one for the \code{rate}
 used. See Details.}
-}
-\value{
-numeric. New rate scaled to chosen mass
 }
 \description{
 \code{scale_rate} - Scales a physiological rate (absolute or
@@ -38,9 +36,31 @@ case of metabolism, absolute (whole animal) rates typically scale at values
 between +0.67 to +1 (i.e. between two-thirds and one), and mass-specific
 rates between -0.33 to 0. Therefore, make sure you use the correct scaling
 exponent for the \code{rate} as entered, INCLUDING THE -/+ SIGN.
-
-The scaled rate is calculated as \verb{((new mass/actual mass) ^ b) * rate}.
 }
+\section{\code{respR} integration}{
+ For the \code{rate} input the function accepts
+objects saved (or piped) from the \code{respR}
+(\url{https://github.com/januarharianto/respR}) \code{convert_rate} function. In
+this case, the rate (absolute or mass-specific) is automatically extracted.
+}
+
+\section{Sign of the \code{rate}}{
+ NOTE: both negative and positive rates can be
+entered. In respirometry experiments, rates are typically reported as
+positive values. These can be entered as is. In the case of
+\code{respR::convert_rate} objects, extracted rates will typically be
+\emph{negative}, and these are left unchanged in the \code{split_rate} function. In
+\code{respR}, to be mathematically consistent (since they represent oxygen
+depletion), respiration rates are represented by negative slopes, and
+therefore rates returned as negative. You can enter the `rate`` as the
+usually reported postive value, or as a negative: the function will work
+with either.
+}
+
+\section{Calculation}{
+ The scaled rate is calculated as: \verb{((new mass/actual mass) ^ b) * rate}.
+}
+
 \examples{
 ## Scaling a whole animal metabolic rate.
 ## Here the rate is in mg/h, the metabolic scaling exponent is 0.72, and
@@ -58,7 +78,7 @@ scale_rate(2.1063, mass = 0.0847, new.mass = 0.5, b = -0.28)
 ## Result = 1.2812 mg/h/g at 0.5g
 
 ## We can see this is the same result as in the first example if it is
-## expressed as a mass-specific rate:
+## expressed as a mass-specific rate at the mass it is scaled to (0.5g):
 ## 0.6406/0.5 = 1.2812 mg/h/g
 
 ## Obviously, scaling a rate to the same mass will give the same rate.

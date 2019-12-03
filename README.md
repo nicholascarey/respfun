@@ -9,6 +9,7 @@
       - [`wm_to_vol`](#wm_to_vol)
       - [`scale_rate`](#scale_rate)
       - [`q_ten`](#q_ten)
+      - [`flush_time`](#flush_time)
   - [Future functionality](#future-functionality)
   - [Full respirometry analyses](#full-respirometry-analyses)
 
@@ -39,7 +40,7 @@ devtools::install_github("nicholascarey/respfun")
 
 ### Functions
 
-Currently there are six functions:
+Currently there are seven functions:
 
 #### `split_rate`
 
@@ -123,7 +124,8 @@ urchins.rd %>%                                           # NOT a group respirome
     #> [1] 2 3 4 5 6 7 8
     #> 
     #> Individual rates (indiv.rates, calculated): 
-    #> [1] -0.1040113 -0.1409772 -0.1749254 -0.2067928 -0.2370945 -0.2661531 -0.2941883
+    #> [1] -0.1040113 -0.1409772 -0.1749254 -0.2067928 -0.2370945 -0.2661531
+    #> [7] -0.2941883
     #> 
     #> Rate units: mg/hour
 
@@ -188,7 +190,11 @@ are required. See `?wm_to_vol` for more.
 
 This function scales a physiological rate to a different body mass using
 a scaling exponent. Works with both absolute (i.e. whole animal) and
-mass-specific rates. See `?scale_rate` for more.
+mass-specific rates. This function integrates with the
+[`respR`](https://github.com/januarharianto/respR) package: objects
+saved from the `respR::convert_rate` function can be entered (or `%>%`
+piped), and the rate will be automatically extracted. See `?scale_rate`
+for more.
 
 #### `q_ten`
 
@@ -201,6 +207,12 @@ the
 package by Matthew Birk, although that has additional functionality for
 determining the best fit Q10 for a range of rates/temperatures. See
 `?q_ten` for more.
+
+#### `flush_time`
+
+Calculates the time taken to flush a respirometer with new water. It
+requires the volume of the respirometer (in L) and the flow rate (in
+L/s) of the input of new water. See `?flush_time` for more.
 
 ### Future functionality
 

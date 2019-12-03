@@ -30,3 +30,30 @@ expect_equal(scale_rate(rate, mass = 2, new.mass = 1, b = 1),
 expect_error(scale_rate(),
              "All four inputs are required.")
 
+
+# respR integration
+library(respR)
+suppressWarnings(
+  urch_rate <- urchins.rd %>%
+    inspect(1, 15, plot = F) %>%
+    calc_rate(from = 4, to = 29, by = "time", plot = F) %>%
+    convert_rate(o2.unit = "mgl-1", time.unit = "m",
+                 output.unit = "mg/h/g", volume = 1.09,
+                 mass = 10))
+
+expect_message(
+  scale_rate(urch_rate,
+             mass = 2,
+             new.mass = 1,
+             b = 0.75),
+  "--- respR::convert_rate object detected ---\n"
+  )
+
+expect_equal(
+  scale_rate(urch_rate,
+             mass = 2,
+             new.mass = 1,
+             b = 0.75),
+  -0.00008468003
+  )
+
