@@ -21,13 +21,16 @@ determined. Defaults to 1.013253.}
 }
 \description{
 Given a wet mass (\code{wet_mass}) and buoyant mass (\code{buoy_mass}),
-this function calculates the density of the specimen. For species such as
-molluscs this can be used to determine the ratio of shell to tissue mass.
-It can also be used to calculate specimen volume for correcting the water
-volume of a respirometer (see \code{\link{eff_vol}}). The temperature
-(\code{t}) and salinity (\code{S}) at which the buoyant mass was determined
-are required (as is atmospheric pressure (\code{P}) which defaults to 1.013253
-bar, if not otherwise specified).
+this function calculates the density of a specimen. Bouyant mass is the
+downward force exerted while the specimen is in water, typically measured
+by having a measuring plate within a tank of water suspended from a
+balance above the tank.  For species such as molluscs this can be used to
+determine the ratio of shell to tissue mass. It can also be used to
+calculate a specimen volume for correcting the water volume of a
+respirometer (see \code{\link{eff_vol}}). The temperature (\code{t}) and
+salinity (\code{S}) at which the buoyant mass was determined are required (as is
+atmospheric pressure (\code{P}) which defaults to 1.013253 bar, if not otherwise
+specified).
 }
 \section{Inputs}{
  Inputs must be in SI units:

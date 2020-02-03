@@ -20,13 +20,15 @@ expect_error(spec_density(NULL, 1, 0, 1, 1),
              "wet_mass is required")
 expect_error(spec_density(1, NULL, 0, 1, 1),
              "buoy_mass is required")
-expect_error(spec_density(1, 1, NULL, 1, 1),
+expect_error(spec_density(1, 0.5, NULL, 1, 1),
              "Temperature is required")
-expect_error(spec_density(1, 1, 1, NULL, 1),
+expect_error(spec_density(1, 1, 1, 1, 1),
+             "Equal values of wet_mass and buoy_mass lead to infinite density errors!")
+expect_error(spec_density(1, 0.5, 1, NULL, 1),
              "Salinity is required")
-expect_error(spec_density(1, 1, 1, 1, NULL),
+expect_error(spec_density(1, 0.5, 1, 1, NULL),
              "Atm. Pressure is required")
-expect_message(spec_density(1, 1, 1, 1, 1),
+expect_message(spec_density(1, 0.5, 1, 1, 1),
              "NOTE: Non-default P value being used")
 
 

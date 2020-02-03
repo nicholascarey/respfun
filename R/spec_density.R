@@ -1,13 +1,16 @@
 #' @title Calculate specimen density
 #'
 #' @description Given a wet mass (`wet_mass`) and buoyant mass (`buoy_mass`),
-#'   this function calculates the density of the specimen. For species such as
-#'   molluscs this can be used to determine the ratio of shell to tissue mass.
-#'   It can also be used to calculate specimen volume for correcting the water
-#'   volume of a respirometer (see \code{\link{eff_vol}}). The temperature
-#'   (\code{t}) and salinity (\code{S}) at which the buoyant mass was determined
-#'   are required (as is atmospheric pressure (`P`) which defaults to 1.013253
-#'   bar, if not otherwise specified).
+#'   this function calculates the density of a specimen. Bouyant mass is the
+#'   downward force exerted while the specimen is in water, typically measured
+#'   by having a measuring plate within a tank of water suspended from a
+#'   balance above the tank.  For species such as molluscs this can be used to
+#'   determine the ratio of shell to tissue mass. It can also be used to
+#'   calculate a specimen volume for correcting the water volume of a
+#'   respirometer (see \code{\link{eff_vol}}). The temperature (`t`) and
+#'   salinity (`S`) at which the buoyant mass was determined are required (as is
+#'   atmospheric pressure (`P`) which defaults to 1.013253 bar, if not otherwise
+#'   specified).
 #'
 #' @section Inputs: Inputs must be in SI units:
 #'
@@ -56,6 +59,8 @@ spec_density <- function(wet_mass = NULL,
     stop("wet_mass is required")
   if (is.null(buoy_mass))
     stop("buoy_mass is required")
+  if (wet_mass == buoy_mass)
+    stop("Equal values of wet_mass and buoy_mass lead to infinite density errors!")
   if (is.null(t))
     stop("Temperature is required")
   if (is.null(S))
