@@ -1,4 +1,4 @@
-# respfun v0.4.1
+# respfun 0.4.1
 
 This patch fixes a major issue in `eff_vol`. All previous versions of this function returned incorrect results at anything other than neutral buoyancy (multiplication instead of division in the mass & density to volume equation, doh!).
 
