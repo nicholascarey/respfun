@@ -95,12 +95,11 @@ eff_vol <- function(resp_vol = NULL,
     if(is.null(spec_density))
       spec_density <- marelac::sw_dens(t = t, S = S, P = P)
 
-    effect_vol <- resp_vol - (spec_mass * (spec_density/1000))
+    effect_vol <- resp_vol - (spec_mass / (spec_density/1000) # kg/m^3 to kg/L
+                              )
     }
 
   ## return
   return(effect_vol)
 
   }
-
-
