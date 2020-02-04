@@ -17,7 +17,8 @@ Roxygen: list(markdown = TRUE)
 Imports:
     glue,
     marelac,
-    respirometry
+    respirometry,
+    methods
 Suggests: 
     testthat,
     covr,
