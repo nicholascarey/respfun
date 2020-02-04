@@ -86,12 +86,22 @@
 scale_rate <- function(rate = NULL, mass = NULL, new.mass = NULL, b = NULL) {
 
   if(class(rate) == "convert_rate"){
-    rate <- rate$output[1]
+    rate <- rate$output
     message("--- respR::convert_rate object detected ---\n")}
 
-  if(length(c(rate, mass, new.mass, b)) != 4) stop("All four inputs are required.")
+  #if(length(c(rate, mass, new.mass, b)) != 4) stop("All four inputs are required.")
+  if(!any(c(methods::hasArg(rate),
+            methods::hasArg(mass),
+            methods::hasArg(new.mass),
+            methods::hasArg(b))))
+    stop("All four inputs are required.")
 
   new.rate <- ((new.mass / mass) ^ b) * rate
 
   return(new.rate)
 }
+
+rate = 1
+mass = 2
+new.mass = 3
+b = 0.75
