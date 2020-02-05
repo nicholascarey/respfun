@@ -18,6 +18,14 @@
 #'   rates between -0.33 to 0. Therefore, make sure you use the correct scaling
 #'   exponent for the `rate` as entered, INCLUDING THE -/+ SIGN.
 #'
+#' @section Multiple rates: Multiple rates can be entered as a vector or as part
+#'   of a `respR::convert_rate` input. If `mass` is a single value, all rates
+#'   will be scaled to the `new.mass`. To scale multiple rates at different
+#'   masses (e.g. from different individuals), `rate` and `mass` should be of
+#'   equal length. The function is fully vectorised: all inputs accepts vectors,
+#'   but these should be single values or of the same length as `rate`. See
+#'   examples.
+#'
 #' @section `respR` integration: For the `rate` input the function accepts
 #'   objects saved (or piped) from the \code{respR}
 #'   (\url{https://github.com/januarharianto/respR}) `convert_rate` function. In
@@ -79,6 +87,17 @@
 #' ## mass-specific rate will be the same at any other body mass.
 #' scale_rate(4.77, mass = 2.5, new.mass = 18.3, b = 0)
 #'
+#' ## To scale multiple rates from the same individual, or multiple rates
+#' ## from different individuals of different mass, use vectors.
+#' # Individual with multiple rates
+#' scale_rate(c(1,2,3), mass = 2.5, new.mass = 10, b = 0.75)
+#' # Multiple individuals of different mass scaled to same `new.mass`
+#' scale_rate(c(1,2,3), mass = c(10,9,8), new.mass = 5, b = 0.75)
+#'
+#' ## You can fully vectorise all inputs, as long as they are single values
+#' ## or vectors of equal length (though not sure why you would want to...)
+#' scale_rate(c(1,2,3), mass = c(10,9,8), new.mass = c(5,6,7), b = c(0.7,0.8,0.9))
+#'
 #' @author Nicholas Carey - \email{nicholascarey@gmail.com}
 #'
 #' @export
@@ -101,7 +120,4 @@ scale_rate <- function(rate = NULL, mass = NULL, new.mass = NULL, b = NULL) {
   return(new.rate)
 }
 
-rate = 1
-mass = 2
-new.mass = 3
-b = 0.75
+
