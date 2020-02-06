@@ -1,4 +1,7 @@
 # respfun 0.4.3
+Minor update
+
+- `split_rate` now accepts multiple input rates, including from `convert_rate` objects. These should obviously all be rates from the *same group*. Minor change to output object as a result: `$indiv.rates` is now a `list` object with each element a vector of individual rates for teh associated group rate in `tR`. Extract via ``$indiv.rates[[1]]` etc.
 
 # respfun 0.4.2
 Another minor fix to `scale_rate`. 
