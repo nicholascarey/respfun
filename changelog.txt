@@ -1,6 +1,2 @@
 CHANGELOG
 
-v0.4.1
-
-- MAJOR FIX: incorrect results returned by `eff_vol`
-- FIX:`spec_density` : warning when wet_mass and buoy_mass are equal (leads to infinite density calculation)

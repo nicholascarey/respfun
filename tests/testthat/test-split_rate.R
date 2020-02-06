@@ -102,10 +102,28 @@ expect_message(split_rate(masses = c(2, 3, 4, 5, 6, 7),
 
 # Test split rate totals group rate ---------------------------------------
 
-expect_equal(sum(respr_output_no_mass$indiv.rates),
+expect_equal(sum(respr_output_no_mass$indiv.rates[[1]]),
              respr_output_no_mass$tR)
 
-expect_equal(sum(simple_output$indiv.rates),
+expect_equal(sum(simple_output$indiv.rates[[1]]),
              simple_output$tR)
 
 
+# Test works with multiple rates ------------------------------------------
+
+
+mult_output <- split_rate(masses = c(2, 3, 4, 5, 6, 7),
+                            tR = c(500,600,700),
+                            b = 0.75)
+
+expect_equal(sum(mult_output$indiv.rates[[1]]),
+             mult_output$tR[1])
+
+expect_equal(sum(mult_output$indiv.rates[[2]]),
+             mult_output$tR[2])
+
+expect_equal(length(mult_output$indiv.rates),
+             length(mult_output$tR))
+
+expect_equal(length(mult_output$indiv.rates),
+             length(mult_output$a))

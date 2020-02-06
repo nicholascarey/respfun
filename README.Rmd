@@ -42,8 +42,7 @@ This function divides a metabolic rate between a group of individuals based on t
 *Benjamin P. Burford, Nicholas Carey, William F. Gilly, Jeremy A. Goldbogen. 2019. Grouping reduces the metabolic demand of a social squid. 
 **Marine Ecology Progress Series**. 612: 141–150 https://doi.org/10.3354/meps12880*
 
-This function integrates with the [`respR`](https://github.com/januarharianto/respR) package: objects saved from the `respR::convert_rate` function can be 
-entered (or `%>%` piped), and the rate and units will be automatically extracted. 
+Rates can be entered manually, and it also integrates with the [`respR`](https://github.com/januarharianto/respR) package: objects saved from the `respR::convert_rate` function can be entered (or `%>%` piped), and the rate and units will be automatically extracted. 
 
 ```{r echo = F}
 library(respfun)
@@ -55,7 +54,7 @@ library(respfun)
 split_rate(tR = 500,                  # total metabolic rate of group
            masses = c(2, 3, 4, 5, 6), # body masses
            b = 0.75,                  # metabolic scaling exponent
-           units = "mg/h")            # units
+           units = "mg/h")            # units (optional)
 ```
 
 ```{r eval = T, echo = F}
