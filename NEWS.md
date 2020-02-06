@@ -1,3 +1,5 @@
+# respfun 0.4.3
+
 # respfun 0.4.2
 Another minor fix to `scale_rate`. 
 

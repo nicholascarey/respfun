@@ -2,7 +2,7 @@ Package: respfun
 Type: Package
 Title: Collection of useful functions for respirometry data and experiments.
 Date: 2019-03-07
-Version: 0.4.2
+Version: 0.4.3
 Author: Nicholas Carey
 Maintainer: Nicholas Carey <nicholascarey@gmail.com>
 Description: CCollection of useful functions for respirometry data and experiments. 
