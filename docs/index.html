@@ -91,7 +91,7 @@
 <li><a href="#bug-reports">Bug reports</a></li>
 </ul>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<p><code>respfun</code> is a collection of functions for use with respirometry data and experiments. I will add to it periodically (<a href="https://github.com/nicholascarey/respfun/issues">suggestions welcome</a>). It is not intended to be a fully featured <code>R</code> package, more a collection of handy functions.</p>
+<p>The <code>respfun</code> package is a collection of functions for use with respirometry data and experiments. I will add to it periodically (<a href="https://github.com/nicholascarey/respfun/issues">suggestions welcome</a>). It is not intended to be a fully featured package, more a collection of handy functions.</p>
 <p>If you use it a citation using this <a href="https://zenodo.org/record/3668903">Zenodo DOI</a> would be much appreciated.</p>
 <p>For full analyses of your respirometry data check out another package I co-developed: <a href="https://github.com/januarharianto/respR"><code>respR</code></a>.</p>
 <div id="installation" class="section level3">
@@ -174,6 +174,7 @@
 <span id="cb5-26"><a href="#cb5-26"></a><span class="co">#&gt; [1] -0.1040113 -0.1409772 -0.1749254 -0.2067928 -0.2370945 -0.2661531 -0.2941883</span></span>
 <span id="cb5-27"><a href="#cb5-27"></a><span class="co">#&gt; </span></span>
 <span id="cb5-28"><a href="#cb5-28"></a><span class="co">#&gt; Rate units: mg/hour</span></span></code></pre></div>
+<p>See <a href="https://nicholascarey.github.io/respfun/reference/split_rate.html"><code>split_rate</code></a> for more.</p>
 </div>
 <div id="eff_vol" class="section level4">
 <h4 class="hasAnchor">
@@ -186,37 +187,37 @@
 <li><p>Alternatively, you can enter the specimen mass and density (see <code>spec_density</code> function below), in which case the specimen volume is calculated and the correction performed using that. If your specimen is neutrally buoyant you could enter the density of the water here (seawater density is usually around 1026 kg/m^3, but see next option for precise calculation).</p></li>
 <li><p>Lastly, you can enter the specimen mass and make the assumption the specimen is the same density as the water, in which case temperature and salinity are required to calculate the water density and perform the correction (strictly speaking atmospheric pressure is also required; in reality it has a negligible effect within normal ranges, although the default value can be changed if desired). This is common in fish respirometry when the specimen is known to be neutrally buoyant, or nearly so.</p></li>
 </ul>
-<p>See <code><a href="reference/eff_vol.html">?eff_vol</a></code> for more.</p>
+<p>See <a href="https://nicholascarey.github.io/respfun/reference/eff_vol.html"><code>eff_vol</code></a> for more.</p>
 </div>
 <div id="spec_density" class="section level4">
 <h4 class="hasAnchor">
 <a href="#spec_density" class="anchor"></a><code>spec_density</code>
 </h4>
-<p>This function calculates a specimen density from a total wet mass and a bouyant mass (see <a href="https://www.researchgate.net/publication/266911357_Buoyant_weight_technique_Application_to_freshwater_bivalves">here</a>). This is common in studies of shell bearing species such as molluscs and echinoderms where it is a non-lethal way of examining the ratio of shell to tissue mass. It can also be used to determine the animal volume for correcting respirometry water volumes (see above). The water temperature and salinity at which buoyant mass was determined are required. See <code><a href="reference/spec_density.html">?spec_density</a></code> for more.</p>
+<p>This function calculates a specimen density from a total wet mass and a bouyant mass (see <a href="https://www.researchgate.net/publication/266911357_Buoyant_weight_technique_Application_to_freshwater_bivalves">here</a>). This is common in studies of shell bearing species such as molluscs and echinoderms where it is a non-lethal way of examining the ratio of shell to tissue mass. It can also be used to determine the animal volume for correcting respirometry water volumes (see above). The water temperature and salinity at which buoyant mass was determined are required. See <a href="https://nicholascarey.github.io/respfun/reference/spec_density.html"><code>spec_density</code></a> for more.</p>
 </div>
 <div id="wm_to_vol" class="section level4">
 <h4 class="hasAnchor">
 <a href="#wm_to_vol" class="anchor"></a><code>wm_to_vol</code>
 </h4>
-<p>This is a simple function to convert a water mass to a water volume. Sometimes it is easier to weigh a respirometer to determine the water mass than try to measure the volume, for example across large size ranges of specimen and respirometer size (e.g. <a href="https://www.dropbox.com/s/d4zp3vm6xakzkts/Carey%20et%20al%20JEB%202016.pdf?dl=0">Carey et al. 2016</a>), where systematic error is a concern. The water temperature and salinity are required. See <code><a href="reference/wm_to_vol.html">?wm_to_vol</a></code> for more.</p>
+<p>This is a simple function to convert a water mass to a water volume. Sometimes it is easier to weigh a respirometer to determine the water mass than try to measure the volume, for example across large size ranges of specimen and respirometer size (e.g. <a href="https://www.dropbox.com/s/d4zp3vm6xakzkts/Carey%20et%20al%20JEB%202016.pdf?dl=0">Carey et al. 2016</a>), where systematic error is a concern. The water temperature and salinity are required. See <a href="https://nicholascarey.github.io/respfun/reference/wm_to_vol.html"><code>wm_to_vol</code></a> for more.</p>
 </div>
 <div id="scale_rate" class="section level4">
 <h4 class="hasAnchor">
 <a href="#scale_rate" class="anchor"></a><code>scale_rate</code>
 </h4>
-<p>This function scales a physiological rate to a different body mass using a scaling exponent. Works with both absolute (i.e. whole animal) and mass-specific rates. This function integrates with the <a href="https://github.com/januarharianto/respR"><code>respR</code></a> package: objects saved from the <code><a href="https://rdrr.io/pkg/respR/man/convert_rate.html">respR::convert_rate</a></code> function can be entered (or <code><a href="https://rdrr.io/pkg/respR/man/grapes-greater-than-grapes.html">%&gt;%</a></code> piped), and the rate will be automatically extracted. See <code><a href="reference/scale_rate.html">?scale_rate</a></code> for more.</p>
+<p>This function scales a physiological rate to a different body mass using a scaling exponent. Works with both absolute (i.e. whole animal) and mass-specific rates. This function integrates with the <a href="https://github.com/januarharianto/respR"><code>respR</code></a> package: objects saved from the <code><a href="https://rdrr.io/pkg/respR/man/convert_rate.html">respR::convert_rate</a></code> function can be entered (or <code><a href="https://rdrr.io/pkg/respR/man/grapes-greater-than-grapes.html">%&gt;%</a></code> piped), and the rate will be automatically extracted. See <a href="https://nicholascarey.github.io/respfun/reference/scale_rate.html"><code>scale_rate</code></a> for more.</p>
 </div>
 <div id="q_ten" class="section level4">
 <h4 class="hasAnchor">
 <a href="#q_ten" class="anchor"></a><code>q_ten</code>
 </h4>
-<p>Calculates any of the five parameters in the Q10 temperature relationship for physiological or chemical processes. Q10 describes the ratio by which a physiological or chemical rate changes with a 10°C increase in temperature. Essentially the same as the <code>Q10</code> function in the <a href="https://cran.r-project.org/web/packages/respirometry/index.html"><code>respirometry</code></a> package by Matthew Birk, although that has additional functionality for determining the best fit Q10 for a range of rates/temperatures. See <code><a href="reference/q_ten.html">?q_ten</a></code> for more.</p>
+<p>Calculates any of the five parameters in the Q10 temperature relationship for physiological or chemical processes. Q10 describes the ratio by which a physiological or chemical rate changes with a 10°C increase in temperature. Essentially the same as the <code>Q10</code> function in the <a href="https://cran.r-project.org/web/packages/respirometry/index.html"><code>respirometry</code></a> package by Matthew Birk, although that has additional functionality for determining the best fit Q10 for a range of rates/temperatures. See <a href="https://nicholascarey.github.io/respfun/reference/q_ten.html"><code>q_ten</code></a> for more.</p>
 </div>
 <div id="flush_time" class="section level4">
 <h4 class="hasAnchor">
 <a href="#flush_time" class="anchor"></a><code>flush_time</code>
 </h4>
-<p>Calculates the time taken to flush a respirometer with new water. It requires the volume of the respirometer (in L) and the flow rate (in L/s) of the input of new water. See <code><a href="reference/flush_time.html">?flush_time</a></code> for more.</p>
+<p>Calculates the time taken to flush a respirometer with new water. It requires the volume of the respirometer (in L) and the flow rate (in L/s) of the input of new water. See <a href="https://nicholascarey.github.io/respfun/reference/flush_time.html"><code>flush_time</code></a> for more.</p>
 </div>
 </div>
 <div id="future-functionality" class="section level3">

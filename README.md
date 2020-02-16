@@ -135,6 +135,10 @@ urchins.rd %>%                                           # NOT a group respirome
     #> 
     #> Rate units: mg/hour
 
+See
+[`split_rate`](https://nicholascarey.github.io/respfun/reference/split_rate.html)
+for more.
+
 #### `eff_vol`
 
 This calculates the ‘effective volume’ of a respirometer, that is the
@@ -168,7 +172,9 @@ effective volume in a number of ways:
     is common in fish respirometry when the specimen is known to be
     neutrally buoyant, or nearly so.
 
-See `?eff_vol` for more.
+See
+[`eff_vol`](https://nicholascarey.github.io/respfun/reference/eff_vol.html)
+for more.
 
 #### `spec_density`
 
@@ -180,7 +186,8 @@ echinoderms where it is a non-lethal way of examining the ratio of shell
 to tissue mass. It can also be used to determine the animal volume for
 correcting respirometry water volumes (see above). The water temperature
 and salinity at which buoyant mass was determined are required. See
-`?spec_density` for more.
+[`spec_density`](https://nicholascarey.github.io/respfun/reference/spec_density.html)
+for more.
 
 #### `wm_to_vol`
 
@@ -190,7 +197,9 @@ mass than try to measure the volume, for example across large size
 ranges of specimen and respirometer size (e.g. [Carey et
 al. 2016](https://www.dropbox.com/s/d4zp3vm6xakzkts/Carey%20et%20al%20JEB%202016.pdf?dl=0)),
 where systematic error is a concern. The water temperature and salinity
-are required. See `?wm_to_vol` for more.
+are required. See
+[`wm_to_vol`](https://nicholascarey.github.io/respfun/reference/wm_to_vol.html)
+for more.
 
 #### `scale_rate`
 
@@ -199,7 +208,8 @@ a scaling exponent. Works with both absolute (i.e. whole animal) and
 mass-specific rates. This function integrates with the
 [`respR`](https://github.com/januarharianto/respR) package: objects
 saved from the `respR::convert_rate` function can be entered (or `%>%`
-piped), and the rate will be automatically extracted. See `?scale_rate`
+piped), and the rate will be automatically extracted. See
+[`scale_rate`](https://nicholascarey.github.io/respfun/reference/scale_rate.html)
 for more.
 
 #### `q_ten`
@@ -212,13 +222,16 @@ the
 [`respirometry`](https://cran.r-project.org/web/packages/respirometry/index.html)
 package by Matthew Birk, although that has additional functionality for
 determining the best fit Q10 for a range of rates/temperatures. See
-`?q_ten` for more.
+[`q_ten`](https://nicholascarey.github.io/respfun/reference/q_ten.html)
+for more.
 
 #### `flush_time`
 
 Calculates the time taken to flush a respirometer with new water. It
 requires the volume of the respirometer (in L) and the flow rate (in
-L/s) of the input of new water. See `?flush_time` for more.
+L/s) of the input of new water. See
+[`flush_time`](https://nicholascarey.github.io/respfun/reference/flush_time.html)
+for more.
 
 ### Future functionality
 
