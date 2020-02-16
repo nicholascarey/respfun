@@ -23,10 +23,11 @@ status](https://ci.appveyor.com/api/projects/status/github/nicholascarey/respfun
 status](https://codecov.io/gh/nicholascarey/respfun/branch/master/graph/badge.svg)](https://codecov.io/github/nicholascarey/respfun?branch=master)
 [![DOI](https://zenodo.org/badge/174339770.svg)](https://zenodo.org/badge/latestdoi/174339770)
 
-`respfun` is a collection of functions for use with respirometry data
-and experiments. I will add to it periodically ([suggestions
+The `respfun` package is a collection of functions for use with
+respirometry data and experiments. I will add to it periodically
+([suggestions
 welcome](https://github.com/nicholascarey/respfun/issues)). It is not
-intended to be a fully featured `R` package, more a collection of handy
+intended to be a fully featured package, more a collection of handy
 functions.
 
 If you use it a citation using this [Zenodo
