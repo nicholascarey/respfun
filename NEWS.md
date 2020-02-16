@@ -1,3 +1,8 @@
+# respfun 0.4.4
+Very minor update
+
+- A startup message is now shown on package load
+
 # respfun 0.4.3
 Minor update
 
