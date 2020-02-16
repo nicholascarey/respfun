@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 The `respfun` package is a collection of functions for use with respirometry data and experiments. I will add to it periodically ([suggestions welcome](https://github.com/nicholascarey/respfun/issues)). It is not intended to be a fully featured package, more a collection of handy functions. 
 
-If you use it a citation using this [Zenodo DOI](https://zenodo.org/record/3668903) would be much appreciated.
+If you use it a citation using this [Zenodo DOI](https://zenodo.org/record/3668902) would be much appreciated.
 
 For full analyses of your respirometry data check out another package I co-developed: [`respR`](https://github.com/januarharianto/respR). 
 

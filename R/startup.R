@@ -12,7 +12,7 @@ respfun", vers, "
 Please cite respfun using the following:
 
 Nicholas Carey, 2020. respfun - Respirometry Utilities R package.
-https://doi.org/10.5281/zenodo.3668903
+https://doi.org/10.5281/zenodo.3668902
 
 Visit this site for help documentation:
 

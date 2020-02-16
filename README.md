@@ -31,7 +31,7 @@ intended to be a fully featured package, more a collection of handy
 functions.
 
 If you use it a citation using this [Zenodo
-DOI](https://zenodo.org/record/3668903) would be much appreciated.
+DOI](https://zenodo.org/record/3668902) would be much appreciated.
 
 For full analyses of your respirometry data check out another package I
 co-developed: [`respR`](https://github.com/januarharianto/respR).
@@ -78,13 +78,20 @@ split_rate(tR = 500,                  # total metabolic rate of group
     #> # split_rate # -------------------------
     #> Rate Division Complete: 
     #> 
-    #> Intercept (a, calculated) :               35.7984448854878
-    #> Metabolic Scaling Exponent (b, entered):  0.75
-    #> Total Group Rate (tR, entered):           500
-    #> Masses (masses, entered): 
+    #> Total Group Rate(s) ($tR, entered):           
+    #> [1] 500
+    #> 
+    #> Metabolic Scaling Exponent ($b, entered):  
+    #> [1] 0.75
+    #> 
+    #> Masses ($masses, entered): 
     #> [1] 2 3 4 5 6
     #> 
-    #> Individual rates (indiv.rates, calculated): 
+    #> Intercept(s) ($a, calculated) :               
+    #> [1] 35.79844
+    #> 
+    #> Individual rates ($indiv.rates, calculated): 
+    #> [[1]]
     #> [1]  60.20557  81.60281 101.25329 119.69931 137.23902
     #> 
     #> Rate units: mg/h
@@ -124,13 +131,20 @@ urchins.rd %>%                                           # NOT a group respirome
     #> Rate Division Complete: 
     #> --- respR::convert_rate object detected ---
     #> 
-    #> Intercept (a, calculated) :               -0.0618454810725696
-    #> Metabolic Scaling Exponent (b, entered):  0.75
-    #> Total Group Rate (tR, entered):           -1.42414265277951
-    #> Masses (masses, entered): 
+    #> Total Group Rate(s) ($tR, entered via convert_rate input):
+    #> [1] -1.424143
+    #> 
+    #> Metabolic Scaling Exponent ($b, entered):  
+    #> [1] 0.75
+    #> 
+    #> Masses ($masses, entered): 
     #> [1] 2 3 4 5 6 7 8
     #> 
-    #> Individual rates (indiv.rates, calculated): 
+    #> Intercept(s) ($a, calculated) :               
+    #> [1] -0.06184548
+    #> 
+    #> Individual rates ($indiv.rates, calculated): 
+    #> [[1]]
     #> [1] -0.1040113 -0.1409772 -0.1749254 -0.2067928 -0.2370945 -0.2661531 -0.2941883
     #> 
     #> Rate units: mg/hour
