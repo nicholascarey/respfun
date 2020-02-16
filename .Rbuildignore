@@ -7,3 +7,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^changelog\.txt$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
