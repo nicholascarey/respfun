@@ -90,7 +90,10 @@ expect_equal(respr_output_no_mass$units,
 
 # rate correctly extracted
 expect_equal(respr_output_no_mass$tR,
-             urch_rate$output.rate)
+             ## v1.x of respR convert_rate had $output,
+             ## later changed to $output.unit
+             if(!is.null(urch_rate$output.rate)) urch_rate$output.rate else
+               if(!is.null(urch_rate$output)) urch_rate$output)
 
 # units correctly ignored
 expect_message(split_rate(masses = c(2, 3, 4, 5, 6, 7),
