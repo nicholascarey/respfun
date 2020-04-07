@@ -136,7 +136,11 @@ split_rate <- function(tR = NULL, masses, b = 0.75, units = NULL) {
     if(!is.null(units))
       message("'units' input ignored. Rate units extracted from convert_rate object.")
 
-    rate <- tR$output
+    ## v1.x of respR convert_rate had $output,
+    ## later changed to $output.unit
+    if(!is.null(tR$output.rate)) rate <- tR$output.rate else
+      if(!is.null(tR$output)) rate <- tR$output
+
     units <- tR$output.unit
     pattern <- c("*/ug", "*/mg", "*/g", "*/kg")
 

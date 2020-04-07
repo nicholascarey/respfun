@@ -90,7 +90,7 @@ expect_equal(respr_output_no_mass$units,
 
 # rate correctly extracted
 expect_equal(respr_output_no_mass$tR,
-             urch_rate$output)
+             urch_rate$output.rate)
 
 # units correctly ignored
 expect_message(split_rate(masses = c(2, 3, 4, 5, 6, 7),

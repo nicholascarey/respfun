@@ -105,7 +105,11 @@
 scale_rate <- function(rate = NULL, mass = NULL, new.mass = NULL, b = NULL) {
 
   if(class(rate) == "convert_rate"){
-    rate <- rate$output
+    ## v1.x of respR convert_rate had $output,
+    ## later changed to $output.unit
+    if(!is.null(rate$output.rate)) rate <- rate$output.rate else
+    if(!is.null(rate$output)) rate <- rate$output
+
     message("--- respR::convert_rate object detected ---\n")}
 
   #if(length(c(rate, mass, new.mass, b)) != 4) stop("All four inputs are required.")
