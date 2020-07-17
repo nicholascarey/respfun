@@ -13,5 +13,6 @@ r_github_packages:
 os:
   - linux
   - osx
+  - windows
 after_success:
   - Rscript -e 'covr::codecov()'
